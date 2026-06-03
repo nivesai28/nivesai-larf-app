@@ -1,0 +1,174 @@
+scheme_code,final_role,classification_confidence,summary_text
+100033,Core,LOW,Snapshot generated
+100064,Trend / Quant,MEDIUM,Snapshot generated
+100081,Core,LOW,Snapshot generated
+100175,Core,LOW,Snapshot generated
+100177,Trend / Quant,LOW,Snapshot generated
+100219,Stabiliser,HIGH,Snapshot generated
+100221,Core,LOW,Snapshot generated
+100254,Satellite,HIGH,Snapshot generated
+100313,Trend / Quant,MEDIUM,Snapshot generated
+100323,Core,LOW,Snapshot generated
+100414,Core,MEDIUM,Snapshot generated
+100415,Trend / Quant,MEDIUM,Snapshot generated
+100475,Stabiliser,LOW,Snapshot generated
+100476,Core,LOW,Snapshot generated
+100477,Core,LOW,Snapshot generated
+100480,Core,LOW,Snapshot generated
+100631,Core,LOW,Snapshot generated
+100651,Stabiliser,LOW,Snapshot generated
+100664,Core,LOW,Snapshot generated
+100684,Core,MEDIUM,Snapshot generated
+100740,Trend / Quant,MEDIUM,Snapshot generated
+100795,Satellite,MEDIUM,Snapshot generated
+100807,Trend / Quant,LOW,Snapshot generated
+100821,Core,LOW,Snapshot generated
+100865,Core,LOW,Snapshot generated
+101065,Core,LOW,Snapshot generated
+101070,Core,MEDIUM,Snapshot generated
+101072,Core,LOW,Snapshot generated
+101209,Core,LOW,Snapshot generated
+101539,Core,LOW,Snapshot generated
+101594,Stabiliser,LOW,Snapshot generated
+101635,Stabiliser,LOW,Snapshot generated
+101672,Core,LOW,Snapshot generated
+101766,Satellite,MEDIUM,Snapshot generated
+101824,Core,LOW,Snapshot generated
+101853,Satellite,HIGH,Snapshot generated
+101922,Trend / Quant,MEDIUM,Snapshot generated
+102000,Stabiliser,LOW,Snapshot generated
+102020,Trend / Quant,MEDIUM,Snapshot generated
+102142,Trend / Quant,LOW,Snapshot generated
+102252,Satellite,MEDIUM,Snapshot generated
+102328,Core,LOW,Snapshot generated
+102401,Trend / Quant,MEDIUM,Snapshot generated
+102414,Satellite,MEDIUM,Snapshot generated
+102434,Satellite,HIGH,Snapshot generated
+102756,Core,LOW,Snapshot generated
+102823,Trend / Quant,LOW,Snapshot generated
+102885,Core,LOW,Snapshot generated
+102920,Core,LOW,Snapshot generated
+102941,Core,LOW,Snapshot generated
+103024,Core,LOW,Snapshot generated
+103034,Trend / Quant,LOW,Snapshot generated
+103040,Satellite,HIGH,Snapshot generated
+103098,Satellite,HIGH,Snapshot generated
+103145,Satellite,MEDIUM,Snapshot generated
+103155,Core,LOW,Snapshot generated
+103166,Satellite,HIGH,Snapshot generated
+103168,Trend / Quant,LOW,Snapshot generated
+103215,Trend / Quant,LOW,Snapshot generated
+103234,Core,LOW,Snapshot generated
+103390,Trend / Quant,LOW,Snapshot generated
+103408,Stabiliser,HIGH,Snapshot generated
+103504,Stabiliser,LOW,Snapshot generated
+103819,Core,LOW,Snapshot generated
+104481,Core,LOW,Snapshot generated
+104523,Trend / Quant,LOW,Snapshot generated
+104636,Core,LOW,Snapshot generated
+104772,Core,LOW,Snapshot generated
+104908,Core,LOW,Snapshot generated
+105001,Core,LOW,Snapshot generated
+105460,Satellite,HIGH,Snapshot generated
+105503,Core,LOW,Snapshot generated
+105628,Core,LOW,Snapshot generated
+105875,Core,LOW,Snapshot generated
+105989,Satellite,MEDIUM,Snapshot generated
+106096,Satellite,HIGH,Snapshot generated
+106144,Core,LOW,Snapshot generated
+106166,Core,LOW,Snapshot generated
+106317,Core,LOW,Snapshot generated
+106425,Trend / Quant,LOW,Snapshot generated
+106654,Trend / Quant,LOW,Snapshot generated
+106871,Stabiliser,LOW,Snapshot generated
+106873,Trend / Quant,LOW,Snapshot generated
+107288,Core,LOW,Snapshot generated
+107353,Satellite,HIGH,Snapshot generated
+107410,Core,LOW,Snapshot generated
+107763,Trend / Quant,LOW,Snapshot generated
+108202,Satellite,MEDIUM,Snapshot generated
+108378,Trend / Quant,MEDIUM,Snapshot generated
+108592,Satellite,MEDIUM,Snapshot generated
+108594,Satellite,HIGH,Snapshot generated
+108596,Core,LOW,Snapshot generated
+108799,Stabiliser,LOW,Snapshot generated
+108909,Satellite,HIGH,Snapshot generated
+109059,Satellite,MEDIUM,Snapshot generated
+109275,Core,LOW,Snapshot generated
+109522,Trend / Quant,MEDIUM,Snapshot generated
+109830,Core,LOW,Snapshot generated
+110603,Core,LOW,Snapshot generated
+111569,Core,LOW,Snapshot generated
+111599,Core,LOW,Snapshot generated
+111638,Core,LOW,Snapshot generated
+111710,Core,LOW,Snapshot generated
+111722,Core,LOW,Snapshot generated
+111787,Trend / Quant,LOW,Snapshot generated
+111940,Stabiliser,LOW,Snapshot generated
+112098,Stabiliser,LOW,Snapshot generated
+112108,Core,LOW,Snapshot generated
+112117,Core,MEDIUM,Snapshot generated
+112152,Trend / Quant,LOW,Snapshot generated
+112171,Trend / Quant,LOW,Snapshot generated
+112277,Core,LOW,Snapshot generated
+112323,Stabiliser,MEDIUM,Snapshot generated
+112901,Trend / Quant,HIGH,Snapshot generated
+112932,Core,LOW,Snapshot generated
+113064,Core,MEDIUM,Snapshot generated
+113099,Trend / Quant,LOW,Snapshot generated
+113221,Core,LOW,Snapshot generated
+114476,Trend / Quant,LOW,Snapshot generated
+114564,Core,HIGH,Snapshot generated
+114931,Trend / Quant,LOW,Snapshot generated
+116547,Core,MEDIUM,Snapshot generated
+117549,Trend / Quant,LOW,Snapshot generated
+117560,Core,LOW,Snapshot generated
+120576,Trend / Quant,LOW,Snapshot generated
+120577,Trend / Quant,MEDIUM,Snapshot generated
+122387,Core,MEDIUM,Snapshot generated
+122640,Core,LOW,Snapshot generated
+125305,Core,MEDIUM,Snapshot generated
+125350,Trend / Quant,LOW,Snapshot generated
+125494,Trend / Quant,LOW,Snapshot generated
+125595,Trend / Quant,LOW,Snapshot generated
+125713,Stabiliser,HIGH,Snapshot generated
+126394,Stabiliser,HIGH,Snapshot generated
+127039,Core,MEDIUM,Snapshot generated
+127849,Stabiliser,MEDIUM,Snapshot generated
+129048,Core,LOW,Snapshot generated
+129213,Trend / Quant,LOW,Snapshot generated
+129647,Trend / Quant,LOW,Snapshot generated
+131357,Stabiliser,HIGH,Snapshot generated
+131578,Core,LOW,Snapshot generated
+131666,Stabiliser,HIGH,Snapshot generated
+132757,Stabiliser,HIGH,Snapshot generated
+133036,Core,MEDIUM,Snapshot generated
+133385,Core,LOW,Snapshot generated
+133513,Trend / Quant,LOW,Snapshot generated
+133711,Core,LOW,Snapshot generated
+133836,Core,LOW,Snapshot generated
+133858,Trend / Quant,LOW,Snapshot generated
+134016,Trend / Quant,LOW,Snapshot generated
+134815,Stabiliser,HIGH,Snapshot generated
+135343,Core,MEDIUM,Snapshot generated
+135598,Core,MEDIUM,Snapshot generated
+135655,Core,LOW,Snapshot generated
+135678,Core,LOW,Snapshot generated
+135784,Stabiliser,HIGH,Snapshot generated
+135794,Trend / Quant,LOW,Snapshot generated
+135797,Trend / Quant,LOW,Snapshot generated
+135804,Trend / Quant,LOW,Snapshot generated
+135812,Trend / Quant,LOW,Snapshot generated
+135815,Trend / Quant,LOW,Snapshot generated
+140172,Core,HIGH,Snapshot generated
+140225,Core,MEDIUM,Snapshot generated
+140355,Core,MEDIUM,Snapshot generated
+141068,Core,MEDIUM,Snapshot generated
+141070,Core,MEDIUM,Snapshot generated
+151037,Trend / Quant,LOW,Snapshot generated
+151076,Core,LOW,Snapshot generated
+151110,Core,MEDIUM,Snapshot generated
+151120,Core,LOW,Snapshot generated
+151127,Stabiliser,HIGH,Snapshot generated
+151133,Trend / Quant,LOW,Snapshot generated
+151144,Trend / Quant,LOW,Snapshot generated

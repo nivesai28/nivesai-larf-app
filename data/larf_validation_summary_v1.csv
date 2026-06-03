@@ -1,0 +1,174 @@
+scheme_code,scheme_name,scheme_category,v2a_score,wf_windows_total,wf_windows_pass,wf_pass_rate,wf_pass,oos_eligible,oos_pass,mc_pass,real_percentile,stability_pass_rate,stability_pass,cliff_detected,validation_score,fully_validated
+100033,Aditya Birla Sun Life Large & Mid Cap Fund - Regular Growth,Equity Scheme - Large & Mid Cap Fund,-0.014957,9.0,4.0,0.444,False,True,True,True,100.0,0.737,False,True,2.0,False
+100064,Aditya Birla Sun Life MNC Fund - Growth - Regular Plan,Equity Scheme - Sectoral/ Thematic,0.01493,9.0,2.0,0.222,False,True,True,True,97.2,0.842,True,False,3.0,False
+100081,DSP Aggressive Hybrid Fund- Regular Plan - Growth,Hybrid Scheme - Aggressive Hybrid Fund,0.01966,9.0,1.0,0.111,False,True,True,True,99.9,0.789,False,False,2.0,False
+100175,quant ELSS Tax Saver Fund - Growth Option - Regular Plan,Equity Scheme - ELSS,-0.076262,9.0,2.0,0.222,False,True,True,True,99.7,0.842,True,False,3.0,False
+100177,quant Small Cap Fund - Growth - Regular Plan,Equity Scheme - Small Cap Fund,-0.026002,9.0,3.0,0.333,False,True,True,True,100.0,0.737,False,False,2.0,False
+100219,JM Large Cap Fund (Regular) - Growth Option,Equity Scheme - Large Cap Fund,-0.066656,9.0,2.0,0.222,False,True,True,True,99.6,1.0,True,False,3.0,False
+100221,JM Aggressive Hybrid Fund (Regular) -Growth Option,Hybrid Scheme - Aggressive Hybrid Fund,-0.008014,9.0,0.0,0.0,False,True,True,False,94.6,0.368,False,True,1.0,False
+100254,JM Value Fund (Regular) - Growth Option,Equity Scheme - Value Fund,-0.151316,9.0,4.0,0.444,False,True,True,True,97.7,1.0,True,False,3.0,False
+100313,LIC MF Flexi Cap Fund-Regular Plan-Growth,Equity Scheme - Flexi Cap Fund,-0.050943,9.0,3.0,0.333,False,True,True,False,94.2,1.0,True,False,2.0,False
+100323,LIC MF Aggressive Hybrid Fund-Regular Plan-Growth,Hybrid Scheme - Aggressive Hybrid Fund,-0.012094,9.0,2.0,0.222,False,True,True,True,99.7,0.526,False,True,2.0,False
+100414,Tata Aggressive Hybrid Fund- Regular Plan - Growth Option,Hybrid Scheme - Aggressive Hybrid Fund,0.024384,9.0,2.0,0.222,False,True,True,True,99.1,0.947,True,False,3.0,False
+100415,Tata Ethical Fund-Regular Plan - Growth Option,Equity Scheme - Sectoral/ Thematic,0.034107,9.0,2.0,0.222,False,True,True,True,100.0,0.895,True,False,3.0,False
+100475,Tata Large Cap Fund -Regular Plan - Growth Option,Equity Scheme - Large Cap Fund,-0.027206,9.0,3.0,0.333,False,True,True,False,92.6,1.0,True,False,2.0,False
+100476,Taurus Flexi Cap Fund - Regular Plan - Growth ,Equity Scheme - Flexi Cap Fund,-0.033839,9.0,4.0,0.444,False,True,True,True,99.5,1.0,True,False,3.0,False
+100477,Taurus Mid Cap Fund - Regular Plan - Growth,Equity Scheme - Mid Cap Fund,-0.027052,9.0,3.0,0.333,False,True,True,True,100.0,0.895,True,True,3.0,False
+100480,Taurus ELSS Tax Saver Fund - Regular Plan - Growth,Equity Scheme - ELSS,-0.031661,9.0,1.0,0.111,False,True,True,True,99.4,0.789,False,False,2.0,False
+100631,quant Multi Cap Fund-GROWTH OPTION - Regular Plan,Equity Scheme - Multi Cap Fund,-0.041477,9.0,2.0,0.222,False,True,True,True,99.4,0.842,True,True,3.0,False
+100651,UTI Large Cap Fund - Regular Plan - Growth Option,Equity Scheme - Large Cap Fund,0.000497,9.0,3.0,0.333,False,True,True,True,100.0,0.316,False,True,2.0,False
+100664,UTI Large & Mid Cap Fund - Regular Plan - Growth Option,Equity Scheme - Large & Mid Cap Fund,-0.02908,9.0,2.0,0.222,False,True,False,False,91.6,1.0,True,False,1.0,False
+100684,UTI Aggressive Hybrid Fund - Regular Plan - Growth,Hybrid Scheme - Aggressive Hybrid Fund,0.002615,9.0,2.0,0.222,False,True,True,True,100.0,0.579,False,True,2.0,False
+100740,UTI - MNC Fund - Regular Plan - Growth Option,Equity Scheme - Sectoral/ Thematic,0.033796,9.0,2.0,0.222,False,True,True,True,98.4,0.842,True,False,3.0,False
+100795,Sundaram Small Cap Fund Regular Plan - Growth,Equity Scheme - Small Cap Fund,-0.098883,9.0,3.0,0.333,False,True,True,True,100.0,0.947,True,False,3.0,False
+100807,UTI Healthcare Fund - Regular Plan - Growth Option,Equity Scheme - Sectoral/ Thematic,0.017799,9.0,2.0,0.222,False,True,False,True,98.3,0.842,True,False,2.0,False
+100821,UTI ELSS Tax Saver Fund - Regular Plan - Growth Option,Equity Scheme - ELSS,0.00216,9.0,3.0,0.333,False,True,True,True,99.9,0.368,False,True,2.0,False
+100865,LIC MF ELSS Tax Saver-Regular Plan-Growth,Equity Scheme - ELSS,-0.011892,9.0,3.0,0.333,False,True,True,True,99.9,0.684,False,True,2.0,False
+101065,quant Mid Cap Fund - Growth Option - Regular Plan,Equity Scheme - Mid Cap Fund,0.018526,9.0,2.0,0.222,False,True,True,True,99.9,0.579,False,True,2.0,False
+101070,quant Aggressive Hybrid Fund - Growth Option - Regular Plan,Hybrid Scheme - Aggressive Hybrid Fund,0.007964,9.0,1.0,0.111,False,True,True,True,100.0,0.474,False,True,2.0,False
+101072,quant Multi Asset Allocation Fund-GROWTH OPTION - Regular Plan,Hybrid Scheme - Multi Asset Allocation,-0.057866,9.0,2.0,0.222,False,True,False,True,97.3,0.737,False,False,1.0,False
+101209,Taurus Large Cap Fund - Regular Plan - Growth,Equity Scheme - Large Cap Fund,-0.048239,9.0,3.0,0.333,False,True,True,True,98.8,0.895,True,False,3.0,False
+101539,Sundaram Mid Cap Fund Regular Plan - Growth,Equity Scheme - Mid Cap Fund,-0.021117,9.0,3.0,0.333,False,True,False,True,100.0,0.474,False,False,1.0,False
+101594,HSBC Large Cap Fund - Regular Growth,Equity Scheme - Large Cap Fund,-0.019139,9.0,3.0,0.333,False,True,True,True,99.6,0.579,False,True,2.0,False
+101635,DSP Large Cap Fund - Regular Plan - Growth,Equity Scheme - Large Cap Fund,-0.054811,9.0,2.0,0.222,False,True,True,False,93.8,1.0,True,False,2.0,False
+101672,Tata Value Fund - Regular Plan -Growth Option,Equity Scheme - Value Fund,-0.021286,9.0,1.0,0.111,False,True,True,True,99.8,0.737,False,True,2.0,False
+101766,Tata Infrastructure Fund-Regular Plan- Growth Option,Equity Scheme - Sectoral/ Thematic,-0.101722,9.0,1.0,0.111,False,True,True,True,97.8,1.0,True,False,3.0,False
+101824,Tata Large & Mid Cap Fund- Regular Plan - Growth Option,Equity Scheme - Large & Mid Cap Fund,-0.021098,9.0,1.0,0.111,False,True,True,False,94.1,0.789,False,False,1.0,False
+101853,Sundaram Value Fund Regular Plan - Growth,Equity Scheme - Value Fund,-0.064757,9.0,3.0,0.333,False,True,False,True,98.6,0.842,True,False,2.0,False
+101922,CANARA ROBECO FLEXICAP FUND - REGULAR PLAN - GROWTH OPTION,Equity Scheme - Flexi Cap Fund,0.024404,9.0,2.0,0.222,False,True,True,True,99.9,0.579,False,True,2.0,False
+102000,HDFC Large Cap Fund - Growth Option - Regular Plan,Equity Scheme - Large Cap Fund,-0.042676,9.0,2.0,0.222,False,True,True,True,98.9,0.579,False,True,2.0,False
+102020,Baroda BNP Paribas MULTI CAP FUND - Regular Plan - Growth Option,Equity Scheme - Multi Cap Fund,-0.032233,9.0,4.0,0.444,False,True,True,True,99.8,0.842,True,False,3.0,False
+102142,Sundaram Consumption Fund(Formerly Known as Sundaram Rural and Consumption Fund Regular Plan - Growth),Equity Scheme - Sectoral/ Thematic,-0.010117,9.0,0.0,0.0,False,True,True,True,98.4,0.474,False,True,2.0,False
+102252,HSBC Flexi Cap Fund - Regular Growth,Equity Scheme - Flexi Cap Fund,-0.02715,9.0,3.0,0.333,False,True,True,True,100.0,0.842,True,False,3.0,False
+102328,Tata Mid Cap Fund Regular Plan- Growth Option,Equity Scheme - Mid Cap Fund,0.010583,9.0,3.0,0.333,False,True,True,True,100.0,0.421,False,True,2.0,False
+102401,UTI Banking and Financial Services Fund - Regular Plan - Growth Option,Equity Scheme - Sectoral/ Thematic,-0.101439,9.0,2.0,0.222,False,True,True,True,96.5,0.947,True,False,3.0,False
+102414,SBI CONTRA FUND - REGULAR PLAN -GROWTH,Equity Scheme - Contra Fund,-0.045832,9.0,2.0,0.222,False,True,False,True,99.2,1.0,True,False,2.0,False
+102434,DSP India T.I.G.E.R. Fund - Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,-0.056264,9.0,2.0,0.222,False,True,False,True,99.9,1.0,True,False,2.0,False
+102756,SBI FOCUSED FUND - REGULAR PLAN -GROWTH,Equity Scheme - Focused Fund,0.035334,9.0,1.0,0.111,False,True,False,True,100.0,1.0,True,False,2.0,False
+102823,SBI HEALTHCARE OPPORTUNITIES FUND - REGULAR PLAN -GROWTH,Equity Scheme - Sectoral/ Thematic,0.007181,9.0,1.0,0.111,False,True,False,True,99.7,0.737,False,False,1.0,False
+102885,SBI EQUITY HYBRID FUND - REGULAR PLAN -Growth,Hybrid Scheme - Aggressive Hybrid Fund,-0.001767,9.0,2.0,0.222,False,True,True,True,99.9,0.526,False,True,2.0,False
+102920,CANARA ROBECO LARGE AND MID CAP FUND - REGULAR PLAN - GROWTH OPTION,Equity Scheme - Large & Mid Cap Fund,0.037173,9.0,3.0,0.333,False,True,True,True,99.9,0.632,False,True,2.0,False
+102941,SBI MIDCAP FUND - REGULAR PLAN - GROWTH,Equity Scheme - Mid Cap Fund,-0.002839,9.0,1.0,0.111,False,True,False,True,99.7,0.947,True,False,2.0,False
+103024,SBI LARGE & MIDCAP FUND- REGULAR PLAN -Growth,Equity Scheme - Large & Mid Cap Fund,-0.019853,9.0,2.0,0.222,False,True,False,True,98.1,0.421,False,True,1.0,False
+103034,SBI MNC FUND - REGULAR PLAN -GROWTH,Equity Scheme - Sectoral/ Thematic,0.034266,9.0,3.0,0.333,False,True,True,True,99.9,1.0,True,False,3.0,False
+103040,Kotak Contra Fund - Regular Plan - Growth,Equity Scheme - Contra Fund,-0.012928,9.0,2.0,0.222,False,True,True,True,99.0,0.632,False,True,2.0,False
+103098,UTI Value Fund - Regular Plan - Growth Option,Equity Scheme - Value Fund,-0.015197,9.0,2.0,0.222,False,True,True,True,99.1,0.526,False,True,2.0,False
+103145,SBI COMMA Fund - REGULAR PLAN - Growth,Equity Scheme - Sectoral/ Thematic,-0.093127,9.0,3.0,0.333,False,True,False,True,96.3,1.0,True,False,2.0,False
+103155,Aditya Birla Sun Life Equity Hybrid'95 Fund - Regular Plan-Growth,Hybrid Scheme - Aggressive Hybrid Fund,0.017008,9.0,3.0,0.333,False,True,True,True,99.6,0.684,False,False,2.0,False
+103166,Aditya Birla Sun Life Flexi Cap Fund - Growth - Regular Plan,Equity Scheme - Flexi Cap Fund,-0.025858,9.0,2.0,0.222,False,True,False,True,99.7,0.842,True,True,2.0,False
+103168,Aditya Birla Sun Life Digital India Fund - Growth - Regular Plan,Equity Scheme - Sectoral/ Thematic,0.000942,9.0,4.0,0.444,False,True,True,True,98.2,0.263,False,False,2.0,False
+103215,SBI Flexicap Fund - REGULAR PLAN -Growth Option,Equity Scheme - Flexi Cap Fund,-0.039877,9.0,2.0,0.222,False,True,True,True,99.5,0.947,True,False,3.0,False
+103234,Kotak Large & Midcap Fund - Growth-Regular,Equity Scheme - Large & Mid Cap Fund,0.023784,9.0,3.0,0.333,False,True,True,True,100.0,0.632,False,False,2.0,False
+103390,CANARA ROBECO INFRASTRUCTURE FUND - REGULAR PLAN - GROWTH OPTION,Equity Scheme - Sectoral/ Thematic,-0.059705,9.0,1.0,0.111,False,True,False,True,98.9,1.0,True,False,2.0,False
+103408,SBI MULTI ASSET ALLOCATION FUND - REGULAR PLAN - GROWTH,Hybrid Scheme - Multi Asset Allocation,0.064778,9.0,0.0,0.0,False,True,False,True,100.0,1.0,True,False,2.0,False
+103504,SBI Large Cap FUND-REGULAR PLAN GROWTH,Equity Scheme - Large Cap Fund,-0.020812,9.0,1.0,0.111,False,True,True,False,92.9,1.0,True,False,2.0,False
+103819,DSP Large & Mid Cap Fund - Regular Plan - Growth,Equity Scheme - Large & Mid Cap Fund,-0.00464,9.0,2.0,0.222,False,True,True,True,99.0,0.368,False,True,2.0,False
+104481,DSP Midcap Fund - Regular Plan - Growth,Equity Scheme - Mid Cap Fund,0.027067,9.0,3.0,0.333,False,True,True,True,100.0,0.526,False,False,2.0,False
+104523,SBI ESG Exclusionary Strategy Fund - Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,-0.009026,9.0,1.0,0.111,False,True,True,True,98.7,0.895,True,True,3.0,False
+104636,Invesco India ELSS Tax Saver Fund - Regular Plan - Growth,Equity Scheme - ELSS,0.006252,9.0,3.0,0.333,False,True,True,True,100.0,0.421,False,True,2.0,False
+104772,DSP ELSS Tax Saver Fund - Regular Plan - Growth,Equity Scheme - ELSS,-0.014707,9.0,1.0,0.111,False,True,True,True,97.1,0.474,False,True,2.0,False
+104908,Kotak Midcap Fund - Regular Plan - Growth,Equity Scheme - Mid Cap Fund,-0.001975,9.0,1.0,0.111,False,True,True,True,99.9,0.789,False,True,2.0,False
+105001,Sundaram Large and Midcap Fund Regular Plan - Growth,Equity Scheme - Large & Mid Cap Fund,-0.013472,9.0,2.0,0.222,False,True,True,True,99.9,0.737,False,False,2.0,False
+105460,Invesco India Contra Fund - Regular Plan - Growth,Equity Scheme - Contra Fund,0.013337,9.0,2.0,0.222,False,True,True,True,99.8,0.579,False,True,2.0,False
+105503,Invesco India Midcap Fund - Regular Plan - Growth Option,Equity Scheme - Mid Cap Fund,0.057623,9.0,4.0,0.444,False,True,True,True,100.0,0.263,False,True,2.0,False
+105628,SBI ELSS Tax Saver FUND - REGULAR PLAN- GROWTH,Equity Scheme - ELSS,-0.009899,9.0,2.0,0.222,False,True,False,True,98.9,1.0,True,False,2.0,False
+105875,DSP Flexi Cap Fund - Regular Plan - Growth,Equity Scheme - Flexi Cap Fund,0.006811,9.0,2.0,0.222,False,True,True,True,100.0,0.474,False,True,2.0,False
+105989,DSP Small Cap Fund - Regular - Growth,Equity Scheme - Small Cap Fund,0.002796,9.0,3.0,0.333,False,True,True,True,100.0,0.737,False,False,2.0,False
+106096,SBI INFRASTRUCTURE FUND -  REGULAR PLAN - GROWTH,Equity Scheme - Sectoral/ Thematic,-0.063728,9.0,4.0,0.444,False,True,False,True,99.6,1.0,True,False,2.0,False
+106144,Invesco India Large & Mid Cap Fund - Regular Plan - Growth,Equity Scheme - Large & Mid Cap Fund,0.016669,9.0,2.0,0.222,False,True,False,True,100.0,0.526,False,False,1.0,False
+106166,CANARA ROBECO EQUITY HYBRID FUND - REGULAR PLAN - GROWTH OPTION,Hybrid Scheme - Aggressive Hybrid Fund,0.043683,9.0,3.0,0.333,False,True,True,True,99.6,1.0,True,False,3.0,False
+106317,Invesco India Balanced Advantage Fund - Regular Plan - Growth,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,-0.012188,9.0,3.0,0.333,False,True,True,True,99.9,0.842,True,True,3.0,False
+106425,UTI India Consumer Fund - Regular Plan - Growth Option,Equity Scheme - Sectoral/ Thematic,0.006134,9.0,4.0,0.444,False,True,True,True,99.4,0.368,False,True,2.0,False
+106654,Invesco India Infrastructure Fund - Regular Plan - Growth Option,Equity Scheme - Sectoral/ Thematic,-0.047563,9.0,3.0,0.333,False,True,True,False,82.6,0.842,True,True,2.0,False
+106871,LIC MF Large Cap Fund-Regular Plan-Growth,Equity Scheme - Large Cap Fund,-0.027592,9.0,2.0,0.222,False,True,True,True,99.8,0.737,False,False,2.0,False
+106873,Aditya Birla Sun Life International Equity Fund - Growth - Regular Plan,Equity Scheme - Sectoral/ Thematic,-0.033654,9.0,1.0,0.111,False,True,False,False,34.7,0.316,False,True,0.0,False
+107288,JM ELSS Tax Saver Fund (Regular) - Growth option,Equity Scheme - ELSS,-0.067421,9.0,3.0,0.333,False,True,True,True,99.7,0.895,True,False,3.0,False
+107353,Invesco India Multicap Fund - Regular Plan - Growth Option,Equity Scheme - Multi Cap Fund,-0.013882,9.0,3.0,0.333,False,True,True,True,100.0,0.211,False,False,2.0,False
+107410,JM Focused Fund (Regular) - Growth Option,Equity Scheme - Focused Fund,-0.146199,8.0,3.0,0.375,False,True,True,False,89.8,1.0,True,False,2.0,False
+107763,LIC MF Infrastructure Fund-Regular Plan-Growth,Equity Scheme - Sectoral/ Thematic,-0.086369,9.0,3.0,0.333,False,True,False,False,94.5,1.0,True,False,1.0,False
+108202,DSP Natural Resources And New Energy Fund - Regular - Growth,Equity Scheme - Sectoral/ Thematic,-0.049118,9.0,1.0,0.111,False,True,True,False,93.7,0.947,True,False,2.0,False
+108378,Invesco India Financial Services Fund - Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,-0.019045,9.0,2.0,0.222,False,True,False,True,99.6,0.684,False,True,1.0,False
+108592,Bandhan Focused Fund - Regular Plan - Growth,Equity Scheme - Focused Fund,-0.071421,9.0,3.0,0.333,False,True,False,True,99.7,0.895,True,False,2.0,False
+108594,BANDHAN Flexi Cap Fund - Regular Plan - Growth,Equity Scheme - Flexi Cap Fund,0.001354,9.0,2.0,0.222,False,True,True,True,100.0,0.526,False,False,2.0,False
+108596,Bandhan Large & Mid Cap Fund - Regular Plan - Growth,Equity Scheme - Large & Mid Cap Fund,-0.027977,9.0,4.0,0.444,False,True,False,True,99.7,0.684,False,False,1.0,False
+108799,BANDHAN Large Cap Fund - Regular Plan - Growth,Equity Scheme - Large Cap Fund,-0.0094,9.0,3.0,0.333,False,True,True,True,99.9,0.526,False,False,2.0,False
+108909,Bandhan Value Fund - Regular Plan - Growth,Equity Scheme - Value Fund,-0.079736,9.0,2.0,0.222,False,True,True,True,100.0,1.0,True,False,3.0,False
+109059,Sundaram Financial Services Opportunities Fund Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,-0.060004,9.0,2.0,0.222,False,True,True,True,97.3,0.842,True,False,3.0,False
+109275,quant Focused Fund - Growth Option - Regular Plan,Equity Scheme - Focused Fund,-0.057013,9.0,2.0,0.222,False,True,True,True,99.8,0.737,False,False,2.0,False
+109522,JM Flexicap Fund (Regular) - Growth option,Equity Scheme - Flexi Cap Fund,-0.095074,9.0,2.0,0.222,False,True,True,True,96.7,1.0,True,False,3.0,False
+109830,quant Flexi Cap Fund - Growth Option - Regular Plan,Equity Scheme - Flexi Cap Fund,-0.179351,9.0,1.0,0.111,False,True,False,True,98.9,1.0,True,False,2.0,False
+110603,BANK OF INDIA Large & Mid Cap Fund Regular Plan- Growth,Equity Scheme - Large & Mid Cap Fund,-0.055708,9.0,3.0,0.333,False,True,False,False,92.0,1.0,True,False,1.0,False
+111569,BANDHAN ELSS Tax Saver Fund - Regular Plan - Growth,Equity Scheme - ELSS,-0.032633,9.0,3.0,0.333,False,True,False,True,99.8,1.0,True,False,2.0,False
+111599,UTI Multi Asset Allocation Fund - Regular Plan - Growth Option,Hybrid Scheme - Multi Asset Allocation,0.016388,9.0,2.0,0.222,False,True,True,True,99.8,0.789,False,False,2.0,False
+111638,Edelweiss ELSS Tax Saver Fund - Regular Plan - Growth Option,Equity Scheme - ELSS,-0.027608,9.0,4.0,0.444,False,True,True,True,100.0,0.737,False,False,2.0,False
+111710,BANK OF INDIA ELSS Tax Saver -Regular Plan- Growth,Equity Scheme - ELSS,-0.023777,9.0,3.0,0.333,False,True,True,True,99.9,0.842,True,False,3.0,False
+111722,CANARA ROBECO ELSS TAX SAVER - REGULAR PLAN - GROWTH OPTION,Equity Scheme - ELSS,0.007126,9.0,3.0,0.333,False,True,True,True,99.7,0.526,False,True,2.0,False
+111787,Taurus Ethical Fund - Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,0.014323,9.0,3.0,0.333,False,True,True,True,100.0,0.474,False,True,2.0,False
+111940,Edelweiss Large Cap Fund - Regular Plan - Growth Option,Equity Scheme - Large Cap Fund,-0.021591,9.0,3.0,0.333,False,True,True,True,98.8,0.526,False,True,2.0,False
+112098,Invesco India Largecap Fund - Regular Plan - Growth,Equity Scheme - Large Cap Fund,-0.002188,9.0,3.0,0.333,False,True,True,True,99.6,0.684,False,False,2.0,False
+112108,Edelweiss Aggressive Hybrid Fund - Regular Plan - Growth Option,Hybrid Scheme - Aggressive Hybrid Fund,-0.006086,9.0,1.0,0.111,False,True,True,True,99.6,0.737,False,True,2.0,False
+112117,Edelweiss Balanced Advantage Fund - Regular Plan - Growth Option,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,0.037395,9.0,3.0,0.333,False,True,True,True,98.3,1.0,True,False,3.0,False
+112152,CANARA ROBECO CONSUMER TRENDS FUND - REGULAR PLAN - GROWTH OPTION,Equity Scheme - Sectoral/ Thematic,0.021113,9.0,2.0,0.222,False,True,True,True,100.0,0.526,False,True,2.0,False
+112171,Invesco India PSU Equity Fund - Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,-0.02157,9.0,4.0,0.444,False,True,False,True,99.8,1.0,True,False,2.0,False
+112277,Axis Large Cap Fund - Regular Plan - Growth,Equity Scheme - Large Cap Fund,0.001661,9.0,3.0,0.333,False,True,True,True,98.5,0.368,False,True,2.0,False
+112323,Axis ELSS Tax Saver Fund - Regular Plan - Growth,Equity Scheme - ELSS,0.002182,9.0,2.0,0.222,False,True,True,False,93.2,0.579,False,True,1.0,False
+112901,DSP Focused Fund - Regular Plan - Growth,Equity Scheme - Focused Fund,-0.035523,9.0,2.0,0.222,False,True,True,True,96.5,0.895,True,False,3.0,False
+112932,Mirae Asset Large & Midcap Fund - Regular Plan - Growth,Equity Scheme - Large & Mid Cap Fund,0.057075,9.0,1.0,0.111,False,True,True,True,99.3,0.526,False,True,2.0,False
+113064,Axis Multi Asset Allocation Fund - Regular Plan - Growth Option,Hybrid Scheme - Multi Asset Allocation,0.026536,9.0,3.0,0.333,False,True,False,True,100.0,0.789,False,False,1.0,False
+113099,SBI PSU Fund - REGULAR PLAN -Growth,Equity Scheme - Sectoral/ Thematic,-0.136867,9.0,3.0,0.333,False,True,True,True,98.3,1.0,True,False,3.0,False
+113221,CANARA ROBECO LARGE CAP FUND - REGULAR PLAN - GROWTH OPTION,Equity Scheme - Large Cap Fund,0.025948,9.0,1.0,0.111,False,True,True,True,97.3,0.684,False,True,2.0,False
+114476,BANDHAN Infrastructure Fund - Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,-0.127837,8.0,2.0,0.25,False,True,True,True,98.0,1.0,True,False,3.0,False
+114564,Axis Midcap Fund - Regular Plan - Growth,Equity Scheme - Mid Cap Fund,0.072252,8.0,3.0,0.375,False,True,True,True,100.0,0.947,True,False,3.0,False
+114931,Mirae Asset Great Consumer Fund - Regular Plan - Growth option,Equity Scheme - Sectoral/ Thematic,0.01624,8.0,3.0,0.375,False,True,True,True,99.6,0.368,False,True,2.0,False
+116547,Groww Largecap Fund (formerly known as Indiabulls Blue Chip Fund) - Regular Plan- Growth Option,Equity Scheme - Large Cap Fund,-0.016726,7.0,3.0,0.429,False,True,False,True,98.6,0.842,True,True,2.0,False
+117549,Baroda BNP Paribas Banking and Financial Services Fund - Regular - Growth Option,Equity Scheme - Sectoral/ Thematic,-0.058088,7.0,1.0,0.143,False,True,False,False,89.8,0.947,True,False,1.0,False
+117560,Axis Focused Fund - Regular Plan - Growth Option,Equity Scheme - Focused Fund,8.2e-05,7.0,2.0,0.286,False,True,True,True,99.6,0.316,False,True,2.0,False
+120576,SBI CONSUMPTION OPPORTUNITIES FUND - REGULAR - GROWTH,Equity Scheme - Sectoral/ Thematic,0.01652,6.0,1.0,0.167,False,True,True,True,96.9,0.789,False,True,2.0,False
+120577,SBI TECHNOLOGY OPPORTUNITIES FUND - REGULAR PLAN - GROWTH,Equity Scheme - Sectoral/ Thematic,0.05725,6.0,4.0,0.667,True,True,True,True,100.0,1.0,True,False,4.0,True
+122387,Motilal Oswal Focused Fund - Regular Plan Growth Option,Equity Scheme - Focused Fund,0.002618,6.0,1.0,0.167,False,True,True,True,98.7,0.474,False,True,2.0,False
+122640,Parag Parikh Flexi Cap Fund - Regular Plan - Growth,Equity Scheme - Flexi Cap Fund,0.101577,6.0,1.0,0.167,False,True,False,True,100.0,0.895,True,False,2.0,False
+125305,PGIM India Midcap Fund - Regular Plan - Growth Option,Equity Scheme - Mid Cap Fund,-0.001679,6.0,2.0,0.333,False,True,False,True,100.0,0.632,False,True,1.0,False
+125350,Axis Small Cap Fund - Regular Plan - Growth,Equity Scheme - Small Cap Fund,0.074909,6.0,2.0,0.333,False,True,True,True,99.6,0.789,False,True,2.0,False
+125494,SBI Small Cap Fund - Regular Plan - Growth,Equity Scheme - Small Cap Fund,0.093925,6.0,1.0,0.167,False,True,False,True,99.4,0.895,True,False,2.0,False
+125595,Aditya Birla Sun Life Banking and Financial Services Fund - Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,-0.032542,5.0,2.0,0.4,False,True,False,True,97.5,0.789,False,False,1.0,False
+125713,Shriram Aggressive Hybrid Fund- Regular Growth,Hybrid Scheme - Aggressive Hybrid Fund,0.042795,6.0,3.0,0.5,True,True,True,True,99.7,0.947,True,True,4.0,True
+126394,DSP Dynamic Asset Allocation Fund - Regular Plan - Growth,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,0.050691,5.0,1.0,0.2,False,True,False,True,100.0,1.0,True,False,2.0,False
+127039,Motilal Oswal Midcap Fund-Regular Plan-Growth Option,Equity Scheme - Mid Cap Fund,0.073995,5.0,2.0,0.4,False,True,True,True,99.7,0.684,False,False,2.0,False
+127849,BANK OF INDIA BALANCED ADVANTAGE FUND REGULAR PLAN  GROWTH,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,0.03923,5.0,1.0,0.2,False,True,True,True,100.0,1.0,True,False,3.0,False
+129048,Motilal Oswal Flexi Cap Fund Regular Plan-Growth Option,Equity Scheme - Flexi Cap Fund,0.010417,5.0,1.0,0.2,False,True,True,True,98.3,0.579,False,True,2.0,False
+129213,Sundaram Infrastructure Advantage Fund Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,-0.042776,5.0,1.0,0.2,False,True,True,True,100.0,0.526,False,False,2.0,False
+129647,Union Small Cap Fund - Regular Plan - Growth Option,Equity Scheme - Small Cap Fund,-0.026874,5.0,1.0,0.2,False,True,True,True,99.8,0.474,False,True,2.0,False
+131357,BANDHAN Balanced Advantage Fund Regular Plan Growth,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,0.013435,5.0,0.0,0.0,False,True,True,True,99.9,0.579,False,False,2.0,False
+131578,360 ONE Focused Fund -Regular Plan - Growth,Equity Scheme - Focused Fund,0.023493,5.0,2.0,0.4,False,True,True,True,99.4,0.789,False,True,2.0,False
+131666,Aditya Birla Sun Life Balanced Advantage Fund - Regular Plan - Growth Option,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,0.033886,5.0,0.0,0.0,False,True,False,True,100.0,0.474,False,False,1.0,False
+132757,Tata ELSS Fund-Growth-Regular Plan,Equity Scheme - ELSS,0.020054,5.0,2.0,0.4,False,True,False,True,98.5,0.737,False,True,1.0,False
+133036,Kotak Aggressive Hybrid Fund - Regular Plan -Growth,Hybrid Scheme - Aggressive Hybrid Fund,0.018304,5.0,0.0,0.0,False,True,True,True,99.7,0.737,False,True,2.0,False
+133385,Motilal Oswal ELSS Tax Saver Fund - Regular Plan - Growth Option,Equity Scheme - ELSS,0.012548,4.0,2.0,0.5,True,True,True,False,91.0,0.316,False,True,2.0,False
+133513,Aditya Birla Sun Life Manufacturing Equity Fund - Regular Plan - Growth,Equity Scheme - Sectoral/ Thematic,0.025237,4.0,2.0,0.5,True,True,True,True,99.8,0.789,False,True,3.0,False
+133711,LIC MF Large & Mid Cap Fund-Regular Plan-Growth,Equity Scheme - Large & Mid Cap Fund,0.006627,4.0,2.0,0.5,True,True,True,False,92.5,0.684,False,True,2.0,False
+133836,PGIM India Flexi Cap Fund - Regular Plan - Growth Option,Equity Scheme - Flexi Cap Fund,0.012951,4.0,1.0,0.25,False,True,True,True,98.8,0.316,False,True,2.0,False
+133858,SBI BANKING & FINANCIAL SERVICES FUND - REGULAR PLAN - GROWTH,Equity Scheme - Sectoral/ Thematic,-0.031712,4.0,1.0,0.25,False,True,False,False,81.3,0.842,True,True,1.0,False
+134016,LIC MF Banking and Financial Services Fund-Regular Plan-Growth,Equity Scheme - Sectoral/ Thematic,-0.106188,4.0,2.0,0.5,True,True,True,False,81.9,0.947,True,False,3.0,False
+134815,Mirae Asset Aggressive Hybrid Fund - Regular Plan - Growth,Hybrid Scheme - Aggressive Hybrid Fund,0.042362,4.0,1.0,0.25,False,True,True,True,99.4,0.789,False,False,2.0,False
+135343,Groww Value Fund (formerly known as Indiabulls Value Fund) - Regular Plan - Growth Option,Equity Scheme - Value Fund,-0.041197,4.0,0.0,0.0,False,True,True,True,98.0,0.947,True,False,3.0,False
+135598,PGIM India ELSS Tax Saver Fund - Regular Plan - Growth Option,Equity Scheme - ELSS,0.019994,4.0,2.0,0.5,True,True,True,True,99.9,0.579,False,False,3.0,False
+135655,Navi ELSS Tax Saver Fund- Regular Plan- Growth Option,Equity Scheme - ELSS,0.004328,4.0,2.0,0.5,True,True,True,True,99.6,0.526,False,False,3.0,False
+135678,Navi Large & Midcap Fund- Regular Plan- Growth Option,Equity Scheme - Large & Mid Cap Fund,0.013838,4.0,2.0,0.5,True,True,True,True,99.8,0.526,False,True,3.0,False
+135784,Mirae Asset ELSS Tax Saver Fund - Regular Plan - Growth,Equity Scheme - ELSS,0.02488,4.0,1.0,0.25,False,True,True,True,97.4,0.579,False,False,2.0,False
+135794,Tata Banking And Financial Services Fund-Regular Plan-Growth,Equity Scheme - Sectoral/ Thematic,-0.000676,4.0,3.0,0.75,True,True,False,False,94.8,0.632,False,True,1.0,False
+135797,Tata Digital India Fund-Regular Plan-Growth,Equity Scheme - Sectoral/ Thematic,0.02808,4.0,2.0,0.5,True,True,True,True,98.9,0.947,True,False,4.0,True
+135804,Tata India Consumer Fund-Regular Plan-Growth,Equity Scheme - Sectoral/ Thematic,0.02997,4.0,0.0,0.0,False,True,True,True,97.7,0.526,False,True,2.0,False
+135812,Tata India Pharma & Healthcare Fund-Regular Plan-Growth,Equity Scheme - Sectoral/ Thematic,-0.004558,4.0,2.0,0.5,True,True,False,False,60.7,1.0,True,False,2.0,False
+135815,Tata Resources & Energy Fund-Regular Plan-Growth,Equity Scheme - Sectoral/ Thematic,0.03279,4.0,2.0,0.5,True,True,True,True,98.8,0.316,False,True,3.0,False
+140172,Edelweiss Large & Mid Cap Fund - Regular Plan - Growth Option,Equity Scheme - Large & Mid Cap Fund,0.038088,3.0,2.0,0.667,True,True,True,True,99.7,0.579,False,False,3.0,False
+140225,Edelweiss Mid Cap Fund - Regular Plan - Growth Option,Equity Scheme - Mid Cap Fund,0.023638,3.0,1.0,0.333,False,True,True,True,99.7,0.421,False,False,2.0,False
+140355,Edelweiss Flexi Cap Fund - Regular Plan - Growth Option,Equity Scheme - Flexi Cap Fund,0.033748,3.0,1.0,0.333,False,True,True,True,99.8,0.526,False,False,2.0,False
+141068,Quantum Value Fund - Regular Plan Growth Option,Equity Scheme - Value Fund,-0.083732,,,,False,True,True,False,66.4,0.895,True,False,2.0,False
+141070,Quantum ELSS Tax Saver Fund - Regular Plan Growth Option,Equity Scheme - ELSS,-0.082859,,,,False,True,True,False,66.7,1.0,True,False,2.0,False
+151037,HSBC Infrastructure Fund - Regular Growth,Equity Scheme - Sectoral/ Thematic,-0.085413,9.0,2.0,0.222,False,True,False,True,100.0,1.0,True,False,2.0,False
+151076,HSBC ELSS Tax saver Fund - Regular Growth,Equity Scheme - ELSS,-0.008367,7.0,4.0,0.571,True,True,True,True,99.9,0.579,False,True,3.0,False
+151110,HSBC Value Fund - Regular Growth,Equity Scheme - Value Fund,0.02608,7.0,4.0,0.571,True,True,True,True,100.0,0.632,False,False,3.0,False
+151120,HSBC Aggressive Hybrid Fund - Regular Growth,Hybrid Scheme - Aggressive Hybrid Fund,0.048091,6.0,3.0,0.5,True,True,True,True,99.9,0.895,True,False,4.0,True
+151127,HSBC Balanced Advantage Fund - Regular Growth,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,0.050252,6.0,3.0,0.5,True,True,True,True,100.0,1.0,True,False,4.0,True
+151133,HSBC Small Cap Fund - Regular Growth,Equity Scheme - Small Cap Fund,-0.024952,5.0,0.0,0.0,False,True,True,True,100.0,0.895,True,False,3.0,False
+151144,HSBC Business Cycles Fund - Regular Growth,Equity Scheme - Sectoral/ Thematic,-0.023708,5.0,2.0,0.4,False,True,False,True,99.4,0.842,True,False,2.0,False
