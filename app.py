@@ -1,6 +1,6 @@
 """
 NivesAI — LARF Overlay Research Tool
-v1.5 — compare funds tab, hero trim, NaN fix, impact fix
+v1.6 — dark theme, native metrics, billboard impact
 Author: Sneha Joshi | NivesAI
 """
 
@@ -20,12 +20,12 @@ st.set_page_config(
 )
 
 # ── Constants ──────────────────────────────────────────────────────────────────
-TEAL        = "#0d6e6e"
-TEAL_DARK   = "#0a4f4f"
-BNH_COLOR   = "#94a3b8"
-CRASH_COLOR = "rgba(239,68,68,0.10)"
-ACTIVE_BAR  = "#0d6e6e"
-IDLE_BAR    = "#e2e8f0"
+TEAL        = "#14b8a6"
+TEAL_DARK   = "#0d9488"
+BNH_COLOR   = "#64748b"
+CRASH_COLOR = "rgba(239,68,68,0.15)"
+ACTIVE_BAR  = "#14b8a6"
+IDLE_BAR    = "#1e293b"
 DEFAULT_AMT = 100_000
 DATA_DIR    = os.path.join(os.path.dirname(__file__), "data")
 
@@ -46,121 +46,109 @@ ROLE_DESC = {
 # ── CSS ────────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-* { font-family: 'Inter', sans-serif !important; }
-[data-testid="stSidebar"] { display: none; }
-.block-container { padding-top: 0 !important; padding-bottom: 2rem !important; max-width: 1160px; }
-hr { border: none; border-top: 1px solid #e2e8f0; margin: 20px 0; }
-[data-testid="stButton"] > button {
-  background: #0d6e6e !important; color: white !important;
-  border: none !important; font-weight: 600 !important;
-}
-[data-testid="stButton"] > button:hover { background: #0a5555 !important; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*, *::before, *::after { font-family: 'Inter', sans-serif !important; }
 
-/* ── Hero (slim) ── */
-.hero {
-  background: linear-gradient(135deg, #0a4f4f 0%, #0f172a 100%);
-  border-radius: 14px; padding: 20px 28px; margin-bottom: 18px;
+[data-testid="stSidebar"]      { display: none !important; }
+[data-testid="collapsedControl"]{ display: none !important; }
+.block-container { padding-top: 1.2rem !important; padding-bottom: 2rem !important; max-width: 1180px; }
+
+/* ── Brand bar ── */
+.brand-bar {
   display: flex; align-items: center; justify-content: space-between;
+  padding: 0 0 18px; border-bottom: 1px solid #1e293b; margin-bottom: 18px;
 }
-.hero-left {}
-.hero-brand { font-size: 1.6rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
-.hero-sub   { font-size: 0.82rem; color: #5eead4; margin-top: 2px; }
-.hero-meta  { font-size: 0.68rem; color: rgba(255,255,255,0.35); margin-top: 6px; }
-.hero-pill  {
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 20px; padding: 5px 14px;
-  font-size: 0.72rem; color: rgba(255,255,255,0.5);
+.brand-name { font-size: 1.5rem; font-weight: 900; color: #14b8a6; letter-spacing: -0.5px; }
+.brand-tag  { font-size: 0.78rem; color: #64748b; margin-top: 2px; }
+.brand-pill {
+  font-size: 0.68rem; color: #475569; border: 1px solid #334155;
+  border-radius: 20px; padding: 4px 12px;
 }
 
-/* ── Impact banner ── */
-.impact {
-  background: linear-gradient(135deg, #0a4f4f 0%, #134e4a 100%);
-  border-radius: 12px; padding: 22px 28px; margin: 6px 0 20px;
+/* ── Impact billboard ── */
+.billboard {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  padding: 28px 32px 24px;
+  margin: 6px 0 22px;
 }
-.impact-headline { font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.45; }
-.impact-sub { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 6px; }
-.hl-good  { color: #6ee7b7; }
-.hl-bad   { color: #fca5a5; }
-.hl-white { color: #fff; font-weight: 800; }
-
-/* ── Metric cards ── */
-.mc {
-  border-radius: 10px; padding: 18px 16px 14px;
-  border: 1.5px solid #e2e8f0; background: #fff;
-  box-shadow: 0 1px 6px rgba(15,23,42,0.05);
-}
-.mc.win  { background: linear-gradient(160deg, #f0fdfa 0%, #ccfbf1 100%); border-color: #99f6e4; }
-.mc.flat { background: #f8fafc; border-color: #e2e8f0; }
-.mc-lbl  { font-size:0.63rem; font-weight:700; text-transform:uppercase; letter-spacing:0.7px; color:#94a3b8; margin-bottom:10px; }
-.mc-big  { font-size:2rem; font-weight:800; color:#0d6e6e; line-height:1.1; }
-.mc-big-flat { font-size:2rem; font-weight:800; color:#0f172a; line-height:1.1; }
-.mc-vs   { font-size:0.75rem; color:#94a3b8; margin:4px 0 6px; }
-.mc-delta { font-size:0.78rem; font-weight:600; }
-.pos { color:#16a34a; } .neg { color:#dc2626; } .neu { color:#94a3b8; }
-
-/* ── Secondary stats ── */
-.sstat-row { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 0; }
-.sstat { background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 16px; }
-.sstat-lbl { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.5px; color:#94a3b8; display:block; margin-bottom:3px; }
-.sstat-val { font-size:0.86rem; font-weight:600; color:#0f172a; }
+.bb-eyebrow { font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+              letter-spacing: 1.2px; color: #14b8a6; margin-bottom: 14px; }
+.bb-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+.bb-block { text-align: center; }
+.bb-label { font-size: 0.68rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.bb-num-bad  { font-size: 3rem; font-weight: 900; color: #f87171; line-height: 1; }
+.bb-num-good { font-size: 3rem; font-weight: 900; color: #34d399; line-height: 1; }
+.bb-num-neu  { font-size: 3rem; font-weight: 900; color: #e2e8f0; line-height: 1; }
+.bb-arrow { font-size: 2rem; color: #475569; padding: 0 4px; }
+.bb-saved { font-size: 1rem; font-weight: 700; color: #34d399; }
+.bb-sub { font-size: 0.82rem; color: #64748b; border-top: 1px solid #334155;
+          padding-top: 12px; margin-top: 4px; line-height: 1.6; }
+.bb-sub strong { color: #94a3b8; }
 
 /* ── Section label ── */
 .slbl {
-  font-size:0.65rem; font-weight:700; text-transform:uppercase;
-  letter-spacing:1.2px; color:#94a3b8; margin:24px 0 12px;
-  display:flex; align-items:center; gap:8px;
+  font-size: 0.63rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.3px; color: #475569; margin: 24px 0 12px;
+  display: flex; align-items: center; gap: 8px;
 }
-.slbl::after { content:''; flex:1; height:1px; background:#f1f5f9; }
+.slbl::after { content: ''; flex: 1; height: 1px; background: #1e293b; }
 
-/* ── Fund meta ── */
-.fund-name { font-size:1.25rem; font-weight:800; color:#0f172a; line-height:1.3; }
-.fund-meta { font-size:0.8rem; color:#64748b; margin-top:4px; }
-.info-row  { display:flex; flex-wrap:wrap; gap:22px; margin:12px 0 0; }
-.ir-item   { display:flex; flex-direction:column; gap:1px; }
-.ir-lbl    { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.5px; color:#94a3b8; }
-.ir-val    { font-size:0.82rem; font-weight:600; color:#0f172a; }
+/* ── Info row ── */
+.info-row { display: flex; flex-wrap: wrap; gap: 24px; margin: 10px 0 0; }
+.ir-item  { display: flex; flex-direction: column; gap: 2px; }
+.ir-lbl   { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.5px; color: #475569; }
+.ir-val   { font-size: 0.82rem; font-weight: 600; color: #cbd5e1; }
 
 /* ── Callout ── */
 .co {
-  background:#f0fdfd; border-left:3px solid #0d6e6e;
-  border-radius:0 8px 8px 0; padding:10px 14px; margin:10px 0;
-  font-size:0.83rem; color:#374151; line-height:1.55;
+  background: #1e293b; border-left: 3px solid #14b8a6;
+  border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 10px 0;
+  font-size: 0.83rem; color: #94a3b8; line-height: 1.55;
 }
 
-/* ── Validation ── */
-.vb-y { background:#fffbeb; color:#92400e; border:1px solid #fde68a; border-radius:5px; padding:3px 10px; font-size:0.73rem; font-weight:600; }
-.vb-g { background:#f0fdf4; color:#14532d; border:1px solid #bbf7d0; border-radius:5px; padding:3px 10px; font-size:0.73rem; font-weight:600; }
-.vb-r { background:#fef2f2; color:#7f1d1d; border:1px solid #fecaca; border-radius:5px; padding:3px 10px; font-size:0.73rem; font-weight:600; }
-.vc { border:1px solid #e2e8f0; border-radius:8px; padding:13px 15px; margin:7px 0; background:#fff; }
-.vc-q { font-size:0.86rem; font-weight:600; color:#0f172a; margin-bottom:5px; }
-.vc-r { font-size:0.81rem; color:#374151; }
+/* ── Validation badges ── */
+.vb-y { background: #422006; color: #fbbf24; border: 1px solid #78350f; border-radius: 5px; padding: 3px 10px; font-size: 0.72rem; font-weight: 600; }
+.vb-g { background: #052e16; color: #4ade80; border: 1px solid #14532d; border-radius: 5px; padding: 3px 10px; font-size: 0.72rem; font-weight: 600; }
+.vb-r { background: #450a0a; color: #f87171; border: 1px solid #7f1d1d; border-radius: 5px; padding: 3px 10px; font-size: 0.72rem; font-weight: 600; }
+
+/* ── Validation checks ── */
+.vc { border: 1px solid #1e293b; border-radius: 8px; padding: 12px 15px; margin: 7px 0; background: #1e293b; }
+.vc-q { font-size: 0.86rem; font-weight: 600; color: #e2e8f0; margin-bottom: 5px; }
+.vc-r { font-size: 0.81rem; color: #94a3b8; }
+
+/* ── Secondary stats ── */
+.sstat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0; }
+.sstat { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 10px 16px; }
+.sstat-lbl { font-size: 0.59rem; text-transform: uppercase; letter-spacing: 0.5px; color: #475569; display: block; margin-bottom: 3px; }
+.sstat-val { font-size: 0.85rem; font-weight: 600; color: #cbd5e1; }
 
 /* ── Note ── */
-.note { font-size:0.71rem; color:#94a3b8; line-height:1.5; margin-top:5px; }
-.disc { font-size:0.69rem; color:#94a3b8; line-height:1.6; }
+.note { font-size: 0.7rem; color: #475569; line-height: 1.5; margin-top: 5px; }
+.disc { font-size: 0.68rem; color: #334155; line-height: 1.6; }
 
 /* ── Compare ── */
-.compare-filter { background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+.compare-filter { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
 </style>
 """, unsafe_allow_html=True)
 
 
 # ── Data loading ───────────────────────────────────────────────────────────────
-@st.cache_data(show_spinner="Loading data …")
+@st.cache_data(show_spinner="Loading …")
 def load_master():
-    res = pd.read_csv(f"{DATA_DIR}/larf_regime_results_v2.csv")
+    res   = pd.read_csv(f"{DATA_DIR}/larf_regime_results_v2.csv")
     res["scheme_code"] = res["scheme_code"].astype(str)
-    val = pd.read_csv(f"{DATA_DIR}/larf_validation_summary_v1.csv")
+    val   = pd.read_csv(f"{DATA_DIR}/larf_validation_summary_v1.csv")
     val["scheme_code"] = val["scheme_code"].astype(str)
-    sch = pd.read_csv(f"{DATA_DIR}/scheme_master_v2_FROZEN.csv")
+    sch   = pd.read_csv(f"{DATA_DIR}/scheme_master_v2_FROZEN.csv")
     sch["scheme_code"] = sch["scheme_code"].astype(str)
-    beh = pd.read_csv(f"{DATA_DIR}/behaviour_classification_app.csv")
+    beh   = pd.read_csv(f"{DATA_DIR}/behaviour_classification_app.csv")
     beh["scheme_code"] = beh["scheme_code"].astype(str)
     beh["summary_text"] = beh["summary_text"].fillna("")
     crash = pd.read_csv(f"{DATA_DIR}/crash_periods_app.csv")
     crash["scheme_code"] = crash["scheme_code"].astype(str)
-    rtl = pd.read_csv(f"{DATA_DIR}/regime_timeline.csv")
+    rtl   = pd.read_csv(f"{DATA_DIR}/regime_timeline.csv")
     rtl["date"] = pd.to_datetime(rtl["date"]).dt.normalize()
 
     df = res.merge(val[[
@@ -202,28 +190,29 @@ def load_nifty_returns():
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 def pct(v, d=1):
-    if v is None or not isinstance(v, (int, float)) or np.isnan(v):
-        return "—"
-    return f"{v*100:.{d}f}%"
+    try:
+        f = float(v)
+        if np.isnan(f): return "—"
+        return f"{f*100:.{d}f}%"
+    except: return "—"
 
 def inr(v):
-    if v is None or not isinstance(v, (int, float)) or np.isnan(v):
-        return "—"
-    if abs(v) >= 1_00_000:
-        return f"₹{v/1_00_000:.2f}L"
-    return f"₹{v:,.0f}"
+    try:
+        f = float(v)
+        if np.isnan(f): return "—"
+        if abs(f) >= 1_00_000: return f"₹{f/1_00_000:.2f}L"
+        return f"₹{f:,.0f}"
+    except: return "—"
 
 def safe_float(v):
     try:
         f = float(v)
-        return f if not np.isnan(f) else None
-    except Exception:
-        return None
+        return None if np.isnan(f) else f
+    except: return None
 
 def prepare_curves(fund_curves, amount, start_ts):
     df = fund_curves[fund_curves["date"] >= start_ts].sort_values("date").reset_index(drop=True)
-    if len(df) < 5:
-        return pd.DataFrame()
+    if len(df) < 5: return pd.DataFrame()
     scale = amount / df["bnh_value"].iloc[0]
     df = df.copy()
     df["bnh_s"] = (df["bnh_value"] * scale).round(0)
@@ -232,89 +221,72 @@ def prepare_curves(fund_curves, amount, start_ts):
     return df
 
 def compute_metrics(df, amount, rtl, nifty_ret_df=None):
-    if len(df) < 10:
-        return None
+    if len(df) < 10: return None
     years = max((df["date"].iloc[-1] - df["date"].iloc[0]).days / 365.25, 0.1)
 
-    def cagr(s):
-        return (s.iloc[-1] / amount) ** (1 / years) - 1 if amount > 0 else np.nan
-
+    def cagr(s): return (s.iloc[-1] / amount) ** (1/years) - 1 if amount > 0 else np.nan
     def mdd(s):
-        roll_max = s.cummax()
-        return float(((s - roll_max) / roll_max).min())
+        rm = s.cummax(); return float(((s-rm)/rm).min())
+    def ann_vol(s): return float(s.pct_change().dropna().std() * np.sqrt(252))
+    def calmar(c,d): return c/abs(d) if d and d!=0 else np.nan
 
-    def ann_vol(s):
-        return float(s.pct_change().dropna().std() * np.sqrt(252))
+    bc = cagr(df["bnh_s"]); vc = cagr(df["v2a_s"])
+    bd = mdd(df["bnh_s"]);  vd = mdd(df["v2a_s"])
+    bv = ann_vol(df["bnh_s"]); vv = ann_vol(df["v2a_s"])
 
-    def calmar(c, d):
-        return c / abs(d) if d and d != 0 and not np.isnan(d) else np.nan
-
-    bnh_c = cagr(df["bnh_s"]); v2a_c = cagr(df["v2a_s"])
-    bnh_d = mdd(df["bnh_s"]);  v2a_d = mdd(df["v2a_s"])
-    bnh_v = ann_vol(df["bnh_s"]); v2a_v = ann_vol(df["v2a_s"])
-
-    # Regime activity — normalize dates before comparing to avoid tz mismatch
     try:
         d_min = pd.Timestamp(df["date"].min()).normalize()
         d_max = pd.Timestamp(df["date"].max()).normalize()
-        rtl_n = rtl.copy()
-        rtl_n["date"] = pd.to_datetime(rtl_n["date"]).dt.normalize()
-        r = rtl_n[(rtl_n["date"] >= d_min) & (rtl_n["date"] <= d_max)]
+        r = rtl[(rtl["date"] >= d_min) & (rtl["date"] <= d_max)]
         reg_pct = float(r["macro_active"].mean()) if len(r) > 0 else np.nan
-    except Exception:
-        reg_pct = np.nan
+    except: reg_pct = np.nan
 
-    # Beta (optional)
     bnh_beta = np.nan; v2a_beta = np.nan
     if nifty_ret_df is not None:
         try:
-            nr = nifty_ret_df[(nifty_ret_df["date"] >= d_min) & (nifty_ret_df["date"] <= d_max)].copy()
+            nr = nifty_ret_df[(nifty_ret_df["date"] >= d_min) & (nifty_ret_df["date"] <= d_max)]
             mb = pd.merge(df[["date","bnh_s"]], nr[["date","daily_return"]], on="date", how="inner")
-            mv = pd.merge(df[["date","v2a_s"]], nr[["date","daily_return"]], on="date", how="inner")
             if len(mb) > 30:
                 rb = mb["bnh_s"].pct_change().dropna()
                 mk = mb["daily_return"].iloc[1:].reset_index(drop=True)
                 vm = mk.var()
                 if vm > 0:
                     bnh_beta = float(np.cov(rb, mk)[0,1] / vm)
+                    mv = pd.merge(df[["date","v2a_s"]], nr[["date","daily_return"]], on="date", how="inner")
                     rv = mv["v2a_s"].pct_change().dropna()
                     mk2 = mv["daily_return"].iloc[1:].reset_index(drop=True)
                     v2a_beta = float(np.cov(rv, mk2)[0,1] / vm)
-        except Exception:
-            pass
+        except: pass
 
     return {
-        "years":     years,
-        "bnh_cagr":  bnh_c,    "v2a_cagr":  v2a_c,
-        "bnh_dd":    bnh_d,    "v2a_dd":    v2a_d,
-        "bnh_vol":   bnh_v,    "v2a_vol":   v2a_v,
-        "bnh_score": bnh_c - abs(bnh_d)/2,
-        "v2a_score": v2a_c - abs(v2a_d)/2,
-        "bnh_calmar":calmar(bnh_c, bnh_d),
-        "v2a_calmar":calmar(v2a_c, v2a_d),
-        "bnh_beta":  bnh_beta, "v2a_beta":  v2a_beta,
+        "years": years,
+        "bnh_cagr": bc, "v2a_cagr": vc,
+        "bnh_dd":   bd, "v2a_dd":   vd,
+        "bnh_vol":  bv, "v2a_vol":  vv,
+        "bnh_score": bc - abs(bd)/2, "v2a_score": vc - abs(vd)/2,
+        "bnh_calmar": calmar(bc,bd),  "v2a_calmar": calmar(vc,vd),
+        "bnh_beta": bnh_beta, "v2a_beta": v2a_beta,
         "final_bnh": float(df["bnh_s"].iloc[-1]),
         "final_v2a": float(df["v2a_s"].iloc[-1]),
-        "reg_pct":   reg_pct,
+        "reg_pct": reg_pct,
     }
 
 def val_badge(score, oos_elig):
     score = int(score) if pd.notna(score) else 0
     mx = 4 if oos_elig else 3
-    if score >= mx:   return f'<span class="vb-g">✅ Validated ({score}/{mx})</span>'
-    elif score >= 2:  return f'<span class="vb-y">⚠️ Partial ({score}/{mx})</span>'
-    else:             return f'<span class="vb-r">❌ Low ({score}/{mx})</span>'
+    if score >= mx:  return f'<span class="vb-g">✅ Validated ({score}/{mx})</span>'
+    elif score >= 2: return f'<span class="vb-y">⚠️ Partial ({score}/{mx})</span>'
+    else:            return f'<span class="vb-r">❌ Low ({score}/{mx})</span>'
 
 
-# ── Hero (slim) ────────────────────────────────────────────────────────────────
+# ── Brand bar ─────────────────────────────────────────────────────────────────
 st.markdown("""
-<div class="hero">
-  <div class="hero-left">
-    <div><span class="hero-brand">NivesAI</span></div>
-    <div class="hero-sub">LARF · Rule-based crash protection tested across 173 Indian mutual funds</div>
-    <div class="hero-meta">Jan 2010 – Apr 2026 &nbsp;·&nbsp; AMFI NAV data &nbsp;·&nbsp; Historical simulation only, not investment advice</div>
+<div class="brand-bar">
+  <div>
+    <div class="brand-name">NivesAI &nbsp;<span style="color:#334155;font-weight:400;font-size:1rem">·</span>&nbsp; LARF</div>
+    <div class="brand-tag">Rule-based crash protection tested across 173 Indian mutual funds &nbsp;·&nbsp; Jan 2010–Apr 2026</div>
   </div>
-  <div class="hero-pill">Research Preview</div>
+  <div class="brand-pill">Historical simulation · Not investment advice</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -326,11 +298,11 @@ nifty_ret = load_nifty_returns()
 
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
-tab1, tab2 = st.tabs(["📊 Fund Analysis", "📋 Compare Funds"])
+tab1, tab2 = st.tabs(["📊  Fund Analysis", "📋  Compare Funds"])
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# TAB 1 — Single fund analysis
+# TAB 1
 # ══════════════════════════════════════════════════════════════════════════════
 with tab1:
     fund_options = {}
@@ -342,19 +314,15 @@ with tab1:
         sel = st.selectbox("Fund", ["— choose a fund —"] + list(fund_options.keys()),
                            label_visibility="visible")
     with fc2:
-        amount = st.number_input(
-            "Investment (₹)", min_value=10_000, max_value=10_00_00_000,
-            value=DEFAULT_AMT, step=10_000, format="%d",
-            help="Initial investment amount",
-        )
+        amount = st.number_input("Investment (₹)", min_value=10_000, max_value=10_00_00_000,
+                                 value=DEFAULT_AMT, step=10_000, format="%d",
+                                 help="Initial investment amount in ₹")
     with fc3:
-        inv_date = st.date_input(
-            "Start date",
-            value=datetime.date(2010, 1, 4),
-            min_value=datetime.date(2010, 1, 1),
-            max_value=datetime.date(2026, 5, 31),
-            help="All metrics computed from this date",
-        )
+        inv_date = st.date_input("Start date",
+                                 value=datetime.date(2010, 1, 4),
+                                 min_value=datetime.date(2010, 1, 1),
+                                 max_value=datetime.date(2026, 5, 31),
+                                 help="All metrics computed from this date")
     with fc4:
         st.markdown("<div style='margin-top:28px'>", unsafe_allow_html=True)
         go_btn = st.button("Analyse →", type="primary", use_container_width=True)
@@ -362,11 +330,11 @@ with tab1:
 
     if sel == "— choose a fund —" or not go_btn:
         st.markdown(
-            '<div style="margin-top:32px;padding:44px 32px;text-align:center;color:#94a3b8;'
-            'border:2px dashed #e2e8f0;border-radius:14px;font-size:0.88rem;background:#fafafa">'
-            '<div style="font-size:2rem;margin-bottom:10px">📊</div>'
-            '<div style="font-weight:600;color:#64748b;margin-bottom:4px">Select a fund and click Analyse</div>'
-            '<div style="font-size:0.78rem">Choose any of the 173 funds — equity, debt, hybrid, or sectoral</div>'
+            '<div style="margin-top:40px;padding:52px 32px;text-align:center;'
+            'border:2px dashed #1e293b;border-radius:14px;background:#0a0f1a">'
+            '<div style="font-size:2.5rem;margin-bottom:12px">📊</div>'
+            '<div style="font-weight:700;color:#94a3b8;font-size:1rem;margin-bottom:6px">Select a fund and click Analyse</div>'
+            '<div style="font-size:0.8rem;color:#475569">Choose from 173 Indian mutual funds — equity, debt, hybrid, sectoral</div>'
             '</div>',
             unsafe_allow_html=True,
         )
@@ -385,189 +353,162 @@ with tab1:
 
     sc = prepare_curves(raw_curves, amount, inv_ts)
     if len(sc) == 0:
-        st.error("No data for this fund and date range.")
-        st.stop()
-
+        st.error("No data for this fund and date range."); st.stop()
     m = compute_metrics(sc, amount, regime_tl, nifty_ret)
     if m is None:
-        st.error("Not enough data to compute metrics.")
-        st.stop()
+        st.error("Not enough data to compute metrics."); st.stop()
 
     is_custom = inv_ts > sim_start
     date_from = inv_ts.strftime("%d %b %Y")
     date_to   = sim_end.strftime("%d %b %Y")
     yrs_str   = f"{m['years']:.1f} yrs"
 
-    # ── Impact banner ──────────────────────────────────────────────────────────
-    dd_saved_pp = (abs(m["bnh_dd"]) - abs(m["v2a_dd"])) * 100  # positive = good
-    dd_bnh_str  = f"{abs(m['bnh_dd'])*100:.1f}%"
-    dd_v2a_str  = f"{abs(m['v2a_dd'])*100:.1f}%"
-    val_bnh     = inr(m["final_bnh"])
-    val_v2a     = inr(m["final_v2a"])
+    # ── Billboard ─────────────────────────────────────────────────────────────
+    dd_saved_pp = (abs(m["bnh_dd"]) - abs(m["v2a_dd"])) * 100
+    val_diff    = m["final_v2a"] - m["final_bnh"]
 
-    if dd_saved_pp > 0.5:
-        headline = (
-            f"Over {yrs_str}, the overlay cut the worst loss from "
-            f"<span class='hl-bad'>{dd_bnh_str}</span> to "
-            f"<span class='hl-good'>{dd_v2a_str}</span> "
-            f"— that's <span class='hl-good'>{dd_saved_pp:.1f} percentage points</span> less damage."
-        )
+    bnh_dd_pct = f"−{abs(m['bnh_dd'])*100:.1f}%"
+    v2a_dd_pct = f"−{abs(m['v2a_dd'])*100:.1f}%"
+
+    if dd_saved_pp >= 0.5:
+        saved_line = f'<div class="bb-saved">▲ {dd_saved_pp:.1f} percentage points less damage</div>'
+        dd_good_class = "bb-num-good"
     else:
-        headline = (
-            f"Over {yrs_str}, worst loss was <span class='hl-bad'>{dd_bnh_str}</span> "
-            f"(holding) vs <span class='hl-good'>{dd_v2a_str}</span> (overlay)."
-        )
+        saved_line = '<div class="bb-saved" style="color:#f87171">▼ Overlay was deeper</div>'
+        dd_good_class = "bb-num-bad"
 
-    val_diff = m["final_v2a"] - m["final_bnh"]
-    if val_diff > 0:
-        val_line = f"₹{amount/1000:.0f}K grew to <span class='hl-white'>{val_v2a}</span> with overlay vs {val_bnh} without."
-    else:
-        val_line = f"₹{amount/1000:.0f}K grew to {val_bnh} (holding) and {val_v2a} (overlay)."
+    val_line  = f"₹{amount/1000:.0f}K → <strong style='color:#e2e8f0'>{inr(m['final_v2a'])}</strong> with overlay &nbsp;·&nbsp; {inr(m['final_bnh'])} without"
+    meta_line = f"{fr['scheme_name']} &nbsp;·&nbsp; {date_from} → {date_to}"
+    if is_custom: meta_line += " &nbsp;·&nbsp; <em>your chosen start date</em>"
 
-    st.markdown(
-        f'<div class="impact">'
-        f'<div class="impact-headline">{headline}</div>'
-        f'<div class="impact-sub">'
-        f'{val_line} &nbsp;·&nbsp; {fr["scheme_name"]} &nbsp;·&nbsp; {date_from} → {date_to}'
-        f'{"&nbsp; · Your chosen start date" if is_custom else ""}'
-        f'</div></div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown(f"""
+    <div class="billboard">
+      <div class="bb-eyebrow">Worst Drawdown · {yrs_str}</div>
+      <div class="bb-row">
+        <div class="bb-block">
+          <div class="bb-label">Without overlay</div>
+          <div class="bb-num-bad">{bnh_dd_pct}</div>
+        </div>
+        <div class="bb-arrow">→</div>
+        <div class="bb-block">
+          <div class="bb-label">With overlay</div>
+          <div class="{dd_good_class}">{v2a_dd_pct}</div>
+        </div>
+        <div style="padding-left:8px;align-self:center">
+          {saved_line}
+        </div>
+      </div>
+      <div class="bb-sub">
+        {val_line}<br>
+        <span style="color:#475569;font-size:0.75rem">{meta_line}</span>
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    # ── Fund meta row ──────────────────────────────────────────────────────────
+    # ── Fund meta ──────────────────────────────────────────────────────────────
     hc1, hc2 = st.columns([7, 2.5])
     with hc1:
-        cat  = fr.get("scheme_category","")
-        role = fr.get("final_role","")
+        cat  = fr.get("scheme_category",""); role = fr.get("final_role","")
         conf = str(fr.get("classification_confidence","")).upper()
         conf_map = {"HIGH":"Strong fit","MEDIUM":"Moderate fit","LOW":"Mixed signals"}
         amc_name = fr.get("amc","")
         role_str = role + (f" · {conf_map.get(conf,'')}" if role and conf else "")
         meta = " · ".join(p for p in [amc_name, cat, role_str] if p)
-        st.markdown(f'<div class="fund-meta">{meta}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size:0.8rem;color:#64748b;margin-top:4px">{meta}</div>',
+                    unsafe_allow_html=True)
     with hc2:
-        oos_e = bool(fr.get("oos_eligible", True))
-        vs    = fr.get("validation_score", 0)
+        oos_e = bool(fr.get("oos_eligible", True)); vs = fr.get("validation_score", 0)
         st.markdown(val_badge(vs, oos_e), unsafe_allow_html=True)
 
     if ROLE_DESC.get(role,""):
-        role_txt = ROLE_DESC[role]
-        low_note = " Confidence is mixed — treat the role as directional." if conf == "LOW" else ""
-        st.markdown(f'<div class="co"><strong>{role}:</strong> {role_txt}{low_note}</div>',
+        low_note = " Confidence is mixed — treat the role as directional." if conf=="LOW" else ""
+        st.markdown(f'<div class="co"><strong style="color:#14b8a6">{role}:</strong> {ROLE_DESC[role]}{low_note}</div>',
                     unsafe_allow_html=True)
 
     num_sells = int(fr.get("v2a_num_sells", 0))
-    reg_str   = f"{m['reg_pct']*100:.0f}% of the period" if pd.notna(m.get("reg_pct")) and not np.isnan(m["reg_pct"]) else "—"
+    reg_str   = f"{m['reg_pct']*100:.0f}% of days" if pd.notna(m.get("reg_pct")) and not np.isnan(m["reg_pct"]) else "—"
     st.markdown(
         f'<div class="info-row">'
-        f'<div class="ir-item"><span class="ir-lbl">Period shown</span><span class="ir-val">{date_from} → {date_to} ({yrs_str})</span></div>'
-        f'<div class="ir-item"><span class="ir-lbl">Rule-based trims (full sim)</span><span class="ir-val">{num_sells} sells over 16 yrs</span></div>'
-        f'<div class="ir-item"><span class="ir-lbl">Days strategy was active</span><span class="ir-val">{reg_str}</span></div>'
+        f'<div class="ir-item"><span class="ir-lbl">Period</span><span class="ir-val">{date_from} → {date_to} ({yrs_str})</span></div>'
+        f'<div class="ir-item"><span class="ir-lbl">Overlay trims (full sim)</span><span class="ir-val">{num_sells} rule-based sells</span></div>'
+        f'<div class="ir-item"><span class="ir-lbl">Strategy was active</span><span class="ir-val">{reg_str}</span></div>'
         f'</div>',
         unsafe_allow_html=True,
     )
 
-    # ── Metric cards ──────────────────────────────────────────────────────────
+    # ── Native metric cards ────────────────────────────────────────────────────
     period_lbl = f"from {date_from}" if is_custom else "2010–2026"
     st.markdown(f'<div class="slbl">Key Numbers · {period_lbl}</div>', unsafe_allow_html=True)
 
     edge_cagr = m["v2a_cagr"] - m["bnh_cagr"]
-    edge_dd   = m["v2a_dd"]   - m["bnh_dd"]   # positive = shallower = good
-    edge_vol  = m["v2a_vol"]  - m["bnh_vol"]  # negative = smoother = good
-
-    r_win  = edge_cagr > 0
-    dd_win = edge_dd   > 0
-    vl_win = edge_vol  < 0
-    v_win  = m["final_v2a"] >= m["final_bnh"]
-
-    def delta_tag(val, cls):
-        sign = "+" if val > 0 else ""
-        return f'<div class="mc-delta {cls}">{sign}{val*100:.2f}% vs holding</div>'
+    edge_dd   = m["v2a_dd"]   - m["bnh_dd"]
+    edge_vol  = m["v2a_vol"]  - m["bnh_vol"]
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        st.markdown(f"""
-        <div class="mc {'win' if r_win else 'flat'}">
-          <div class="mc-lbl">Annual Return (CAGR)</div>
-          <div class="mc-big">{pct(m['v2a_cagr'],2)}</div>
-          <div class="mc-vs">holding: {pct(m['bnh_cagr'],2)}</div>
-          <div class="mc-delta {'pos' if r_win else 'neg'}">{"+" if r_win else ""}{edge_cagr*100:.2f}% vs holding</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric(
+            label="Annual Return · Overlay",
+            value=pct(m["v2a_cagr"], 2),
+            delta=f"{edge_cagr*100:+.2f}% vs holding",
+        )
+        st.caption(f"Holding: {pct(m['bnh_cagr'],2)}")
     with c2:
-        dd_delta = abs(m['bnh_dd'])*100 - abs(m['v2a_dd'])*100
-        st.markdown(f"""
-        <div class="mc {'win' if dd_win else 'flat'}">
-          <div class="mc-lbl">Worst Drawdown</div>
-          <div class="mc-big">−{abs(m['v2a_dd'])*100:.1f}%</div>
-          <div class="mc-vs">holding: −{abs(m['bnh_dd'])*100:.1f}%</div>
-          <div class="mc-delta {'pos' if dd_win else 'neg'}">{"" if dd_win else "−"}{abs(dd_delta):.1f} pp {"shallower ✓" if dd_win else "deeper"}</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric(
+            label="Worst Drawdown · Overlay",
+            value=f"−{abs(m['v2a_dd'])*100:.1f}%",
+            delta=f"{'−' if (m['v2a_dd'] - m['bnh_dd']) < 0 else '+'}{abs(m['v2a_dd'] - m['bnh_dd'])*100:.1f} pp vs holding",
+            delta_color="inverse",   # negative delta = green (less drawdown = better)
+        )
+        st.caption(f"Holding: −{abs(m['bnh_dd'])*100:.1f}%")
     with c3:
-        vl_delta = abs(m['bnh_vol'])*100 - abs(m['v2a_vol'])*100
-        st.markdown(f"""
-        <div class="mc {'win' if vl_win else 'flat'}">
-          <div class="mc-lbl">Annualised Volatility</div>
-          <div class="mc-big">{pct(m['v2a_vol'],1)}</div>
-          <div class="mc-vs">holding: {pct(m['bnh_vol'],1)}</div>
-          <div class="mc-delta {'pos' if vl_win else 'neg'}">{"" if vl_win else "−"}{abs(vl_delta):.1f} pp {"smoother ✓" if vl_win else "rougher"}</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric(
+            label="Annualised Volatility · Overlay",
+            value=pct(m["v2a_vol"], 1),
+            delta=f"{edge_vol*100:+.1f}% vs holding",
+            delta_color="inverse",
+        )
+        st.caption(f"Holding: {pct(m['bnh_vol'],1)}")
     with c4:
         ev = m["final_v2a"] - m["final_bnh"]
-        st.markdown(f"""
-        <div class="mc {'win' if v_win else 'flat'}">
-          <div class="mc-lbl">Portfolio Value · {period_lbl}</div>
-          <div class="mc-big" style="font-size:1.65rem">{inr(m['final_v2a'])}</div>
-          <div class="mc-vs">holding: {inr(m['final_bnh'])}</div>
-          <div class="mc-delta {'pos' if v_win else 'neg'}">{'+' if ev>=0 else ''}{inr(ev)} difference</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric(
+            label=f"Portfolio Value · {period_lbl}",
+            value=inr(m["final_v2a"]),
+            delta=f"{'+' if ev>=0 else ''}{inr(ev)} vs holding",
+        )
+        st.caption(f"Holding: {inr(m['final_bnh'])}")
 
     # Secondary stats
-    def sstat_html(label, bnh_v, ov_v, fmt_fn, higher_is_better=True, tooltip=""):
-        bv, ov = fmt_fn(bnh_v), fmt_fn(ov_v)
+    fmt2 = lambda v: f"{v:.2f}" if v is not None else "—"
+    fmt3 = lambda v: f"{v:.3f}" if v is not None else "—"
+
+    def sstat_html(label, bv, ov, fmt, hib=True, tip=""):
+        bvs, ovs = fmt(safe_float(bv)), fmt(safe_float(ov))
         arrow = ""
         try:
-            if bnh_v is not None and ov_v is not None and not np.isnan(bnh_v) and not np.isnan(ov_v):
-                d = ov_v - bnh_v
-                better = (d > 0 and higher_is_better) or (d < 0 and not higher_is_better)
-                arrow = f' <span class="{"pos" if better else "neg"}" style="font-size:0.7rem">{"↑" if better else "↓"}</span>'
-        except Exception:
-            pass
-        tip = f' title="{tooltip}"' if tooltip else ""
-        return (f'<div class="sstat"{tip}>'
+            bf, of = float(bv), float(ov)
+            if not (np.isnan(bf) or np.isnan(of)):
+                better = (of > bf and hib) or (of < bf and not hib)
+                c = "#34d399" if better else "#f87171"
+                arrow = f' <span style="color:{c};font-size:0.7rem">{"↑" if better else "↓"}</span>'
+        except: pass
+        t = f' title="{tip}"' if tip else ""
+        return (f'<div class="sstat"{t}>'
                 f'<span class="sstat-lbl">{label}</span>'
-                f'<span class="sstat-val">{bv} → <strong style="color:#0d6e6e">{ov}</strong>{arrow}</span>'
+                f'<span class="sstat-val">{bvs} → <strong style="color:#14b8a6">{ovs}</strong>{arrow}</span>'
                 f'</div>')
 
-    fmt2 = lambda v: f"{v:.2f}" if v is not None and not np.isnan(v) else "—"
-    fmt3 = lambda v: f"{v:.3f}" if v is not None and not np.isnan(v) else "—"
-
     ss = [
-        sstat_html("Calmar Ratio",
-                   safe_float(m["bnh_calmar"]), safe_float(m["v2a_calmar"]),
-                   fmt2, higher_is_better=True,
-                   tooltip="Return ÷ worst loss. Higher = better risk-adjusted return."),
-        sstat_html("Efficiency Score",
-                   safe_float(m["bnh_score"]), safe_float(m["v2a_score"]),
-                   fmt3, higher_is_better=True,
-                   tooltip="CAGR minus half the max drawdown. A single number that penalises big drops."),
+        sstat_html("Calmar Ratio", m["bnh_calmar"], m["v2a_calmar"], fmt2, hib=True,
+                   tip="Return ÷ worst loss. Higher = better risk-adjusted return."),
+        sstat_html("Efficiency Score", m["bnh_score"], m["v2a_score"], fmt3, hib=True,
+                   tip="CAGR minus half the max drawdown. Penalises big drops."),
     ]
     if pd.notna(m["bnh_beta"]):
-        ss.append(sstat_html("Beta vs Nifty 50",
-                             safe_float(m["bnh_beta"]), safe_float(m["v2a_beta"]),
-                             fmt2, higher_is_better=False,
-                             tooltip="How much the fund moves per 1% move in Nifty 50. Overlay typically reduces this."))
-
+        ss.append(sstat_html("Beta vs Nifty 50", m["bnh_beta"], m["v2a_beta"], fmt2, hib=False,
+                             tip="Sensitivity to Nifty moves. Lower = less market risk."))
     st.markdown(f'<div class="sstat-row">{"".join(ss)}</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="note">'
-        '<strong>Calmar:</strong> return ÷ worst loss — higher is better. &nbsp;'
-        '<strong>Efficiency Score:</strong> single number that rewards return and penalises big drops — higher is better.'
-        + (' &nbsp;<strong>Beta:</strong> moves per 1% Nifty move (overlay reduces market sensitivity).' if pd.notna(m["bnh_beta"]) else '')
-        + '</div>',
-        unsafe_allow_html=True,
-    )
 
-    # 2024-26 sideways callout
+    # 2024-26 callout
     crash_sw = crash_df[(crash_df["scheme_code"] == code) &
                         crash_df["period_name"].str.contains("Sideways", na=False)]
     if len(crash_sw) > 0:
@@ -575,12 +516,12 @@ with tab1:
         if pd.notna(sw.get("v2a_beats_bnh")):
             bf = abs(sw["bnh_max_dd"])*100 if pd.notna(sw["bnh_max_dd"]) else None
             vf = abs(sw["v2a_max_dd"])*100 if pd.notna(sw["v2a_max_dd"]) else None
-            fund_r = (f"This fund: {bf:.1f}% drop without overlay vs {vf:.1f}% with it. " if bf and vf else "")
+            fr_txt = (f"This fund: {bf:.1f}% without overlay → {vf:.1f}% with. " if bf and vf else "")
             icon = "📈" if sw["v2a_beats_bnh"] else "📉"
             st.markdown(
                 f'<div class="co" style="margin-top:14px">'
-                f'{icon} <strong>Recent sideways market (2024–26):</strong> {fund_r}'
-                f'Across all 173 funds, overlay outperformed simple holding in <strong>152 of 173 (88%)</strong> of cases.</div>',
+                f'{icon} <strong style="color:#14b8a6">2024–26 sideways market:</strong> {fr_txt}'
+                f'Across all 173 funds, overlay outperformed simple holding in <strong style="color:#e2e8f0">152 of 173 (88%)</strong> cases.</div>',
                 unsafe_allow_html=True,
             )
 
@@ -590,13 +531,16 @@ with tab1:
     fig = make_subplots(rows=2, cols=1, shared_xaxes=True,
                         row_heights=[0.82, 0.18], vertical_spacing=0.04)
 
-    dates = sc["ds"].tolist()
-    fig.add_trace(go.Scatter(x=dates, y=sc["bnh_s"].tolist(), mode="lines",
-        name="Simple holding", line=dict(color="#94a3b8", width=1.8),
-        hovertemplate="<b>Simple holding</b><br>%{x}<br>₹%{y:,.0f}<extra></extra>"), row=1, col=1)
-    fig.add_trace(go.Scatter(x=dates, y=sc["v2a_s"].tolist(), mode="lines",
+    fig.add_trace(go.Scatter(
+        x=sc["ds"].tolist(), y=sc["bnh_s"].tolist(), mode="lines",
+        name="Simple holding", line=dict(color="#475569", width=1.8),
+        hovertemplate="<b>Simple holding</b><br>%{x}<br>₹%{y:,.0f}<extra></extra>"),
+        row=1, col=1)
+    fig.add_trace(go.Scatter(
+        x=sc["ds"].tolist(), y=sc["v2a_s"].tolist(), mode="lines",
         name="With overlay", line=dict(color=TEAL, width=2.5),
-        hovertemplate="<b>With overlay</b><br>%{x}<br>₹%{y:,.0f}<extra></extra>"), row=1, col=1)
+        hovertemplate="<b>With overlay</b><br>%{x}<br>₹%{y:,.0f}<extra></extra>"),
+        row=1, col=1)
 
     rg = regime_tl[(regime_tl["date"] >= sc["date"].min()) &
                    (regime_tl["date"] <= sc["date"].max())].copy()
@@ -611,25 +555,30 @@ with tab1:
                    y0=0.22, y1=1.0, fillcolor=CRASH_COLOR, line_width=0, layer="below")
               for _, s, e in CRASH_PERIODS]
 
-    fig.update_layout(shapes=shapes, height=520,
+    fig.update_layout(
+        shapes=shapes, height=520,
         margin=dict(l=0, r=0, t=10, b=0),
-        paper_bgcolor="white", plot_bgcolor="#fafeff",
+        paper_bgcolor="#0f172a", plot_bgcolor="#0f172a",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0,
-                    font=dict(size=11), bgcolor="rgba(255,255,255,0)"),
-        hovermode="x unified", font=dict(family="Inter, sans-serif"))
-    fig.update_yaxes(tickprefix="₹", tickformat=",.0f", gridcolor="#f1f5f9", row=1, col=1)
-    fig.update_yaxes(tickvals=[0,1], ticktext=["","Active"], gridcolor="#f1f5f9", row=2, col=1)
-    fig.update_xaxes(type="date", tickformat="%b '%y", gridcolor="#f1f5f9")
+                    font=dict(size=11, color="#94a3b8"), bgcolor="rgba(0,0,0,0)"),
+        hovermode="x unified", font=dict(family="Inter, sans-serif", color="#94a3b8"),
+    )
+    fig.update_yaxes(tickprefix="₹", tickformat=",.0f", gridcolor="#1e293b",
+                     tickfont=dict(color="#475569"), row=1, col=1)
+    fig.update_yaxes(tickvals=[0,1], ticktext=["","Active"], gridcolor="#1e293b",
+                     tickfont=dict(color="#475569"), row=2, col=1)
+    fig.update_xaxes(type="date", tickformat="%b '%y", gridcolor="#1e293b",
+                     tickfont=dict(color="#475569"))
 
     st.plotly_chart(fig, use_container_width=True)
     st.markdown(
         '<div class="note">🔴 Shaded = major crashes (2011, 2015–16, 2018–19, 2020 COVID). '
-        'Bottom bar = days the strategy was actively watching for risk signals.</div>',
+        'Bottom bar = days the strategy was watching for risk signals.</div>',
         unsafe_allow_html=True,
     )
 
     # ── Crash table ────────────────────────────────────────────────────────────
-    st.markdown('<div class="slbl">How Did It Hold Up During Each Crash?</div>', unsafe_allow_html=True)
+    st.markdown('<div class="slbl">Crash-by-Crash Comparison</div>', unsafe_allow_html=True)
 
     crash_main = crash_df[(crash_df["scheme_code"] == code) &
                           ~crash_df["period_name"].str.contains("Sideways", na=False)]
@@ -642,77 +591,75 @@ with tab1:
             b = abs(r["bnh_max_dd"])*100; v = abs(r["v2a_max_dd"])*100
             s = abs(r["drawdown_saved"])*100; win = bool(r["v2a_beats_bnh"])
             rows.append({
-                "Period":          r["period_name"],
+                "Period": r["period_name"],
                 "Without overlay": f"−{b:.1f}%",
                 "With overlay":    f"−{v:.1f}%",
-                "Overlay helped?": f"✅  Yes, {s:.1f} pp shallower" if win else f"❌  No, {s:.1f} pp deeper",
+                "Overlay helped?": f"✅  {s:.1f} pp shallower" if win else f"❌  {s:.1f} pp deeper",
             })
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True,
         column_config={
             "Period":          st.column_config.TextColumn(width=175),
             "Without overlay": st.column_config.TextColumn(width=155),
             "With overlay":    st.column_config.TextColumn(width=155),
-            "Overlay helped?": st.column_config.TextColumn(width=230),
+            "Overlay helped?": st.column_config.TextColumn(width=220),
         })
-    st.markdown('<div class="note">"pp" = percentage points. Shallower = less portfolio damage.</div>',
-                unsafe_allow_html=True)
 
     # ── Validation ─────────────────────────────────────────────────────────────
-    with st.expander("🔍  How reliable are these results? (4 independent checks)", expanded=False):
-        st.markdown("We ran four independent checks to test whether the overlay's edge is real or just a lucky fit to past data.")
+    with st.expander("🔍  How reliable are these results? (4 independent checks)"):
+        st.markdown("Four tests to check if the overlay's edge is real or a lucky fit to past data.")
 
         wf_p = bool(fr.get("wf_pass",False)); wf_r = fr.get("wf_pass_rate")
         wf_n = fr.get("wf_windows_pass"); wf_t = fr.get("wf_windows_total")
         if pd.notna(wf_r):
             wf_d = (f"{'✅' if wf_p else '❌'} Beat simple holding in **{int(wf_n or 0)} of {int(wf_t or 0)} windows** ({(wf_r or 0)*100:.0f}%). "
-                    + ("Consistent across different time periods." if wf_p else "Performance varied — depends heavily on when you invested."))
+                    + ("Consistent." if wf_p else "Inconsistent — result depends on when you invested."))
         else:
             wf_d = "❌ Not enough history (needs 7+ years)."
-        st.markdown(f'<div class="vc"><div class="vc-q">Check 1 — Does it work consistently across different time periods?</div>'
+        st.markdown(f'<div class="vc"><div class="vc-q">Check 1 — Consistent across time periods?</div>'
                     f'<div class="vc-r">{wf_d}</div></div>', unsafe_allow_html=True)
 
-        oos_e2 = bool(fr.get("oos_eligible", True)); oos_p = bool(fr.get("oos_pass", False))
+        oos_e2 = bool(fr.get("oos_eligible",True)); oos_p = bool(fr.get("oos_pass",False))
         if not oos_e2:
             oos_d = "— Not eligible (needs 5+ years of training data)."
         elif oos_p:
             oos_d = "✅ Outperformed on 2023–2026 data the strategy had never seen. Strong evidence the edge is genuine."
         else:
-            oos_d = "❌ Did not outperform on fresh 2023–2026 data. Strategy may be over-fitted to older patterns."
-        st.markdown(f'<div class="vc"><div class="vc-q">Check 2 — Would it hold up on data it had never seen?</div>'
+            oos_d = "❌ Did not outperform on fresh 2023–2026 data. May be over-fitted to older patterns."
+        st.markdown(f'<div class="vc"><div class="vc-q">Check 2 — Held up on data it had never seen?</div>'
                     f'<div class="vc-r">{oos_d}</div></div>', unsafe_allow_html=True)
 
         mc_p = bool(fr.get("mc_pass",False)); mc_pct = fr.get("real_percentile")
         if pd.notna(mc_pct):
-            mc_d = (f"{'✅' if mc_p else '❌'} Real result ranked in the **{mc_pct:.1f}th percentile** out of 1,000 random simulations. "
+            mc_d = (f"{'✅' if mc_p else '❌'} Real result ranked **{mc_pct:.1f}th percentile** out of 1,000 random simulations. "
                     + (f"Only ~{100-mc_pct:.0f}% of random runs matched it — very unlikely to be luck." if mc_p
-                       else "Random simulations often matched it — the edge may be partly coincidence."))
+                       else "Random simulations often matched it — may be partly coincidence."))
         else:
             mc_d = "Monte Carlo data not available."
-        st.markdown(f'<div class="vc"><div class="vc-q">Check 3 — Could this just be luck?</div>'
+        st.markdown(f'<div class="vc"><div class="vc-q">Check 3 — Could this be luck?</div>'
                     f'<div class="vc-r">{mc_d}</div></div>', unsafe_allow_html=True)
 
-        st_p = bool(fr.get("stability_pass",False)); st_r = fr.get("stability_pass_rate"); cliff = bool(fr.get("cliff_detected",False))
+        st_p = bool(fr.get("stability_pass",False)); st_r = fr.get("stability_pass_rate")
+        cliff = bool(fr.get("cliff_detected",False))
         if pd.notna(st_r):
             st_d = (f"{'✅' if st_p else '❌'} Held up in **{st_r*100:.0f}%** of 20 parameter variations. "
-                    + ("Robust — small rule changes don't break it." if st_p else "Sensitive — small changes affect outcomes.")
+                    + ("Robust." if st_p else "Sensitive — small rule changes affect outcomes.")
                     + (" ⚠️ One threshold caused a larger-than-expected shift." if cliff else ""))
         else:
             st_d = "Stability data not available."
-        st.markdown(f'<div class="vc"><div class="vc-q">Check 4 — Does it break if the rules are nudged slightly?</div>'
+        st.markdown(f'<div class="vc"><div class="vc-q">Check 4 — Robust to small rule changes?</div>'
                     f'<div class="vc-r">{st_d}</div></div>', unsafe_allow_html=True)
 
         vs_int = int(fr.get("validation_score",0)) if pd.notna(fr.get("validation_score")) else 0
         mx2 = 4 if oos_e2 else 3
-        if vs_int >= mx2:     st.success(f"✅ Passed all {mx2} checks. High confidence in these results.")
-        elif vs_int >= 2:     st.warning(f"Passed {vs_int}/{mx2} checks. Crash protection evidence is solid; return figures are directional.")
-        else:                 st.error(f"Only {vs_int}/{mx2} checks passed. Treat results with caution.")
+        if vs_int >= mx2:  st.success(f"✅ Passed all {mx2} checks. High confidence.")
+        elif vs_int >= 2:  st.warning(f"Passed {vs_int}/{mx2}. Crash protection is solid; return figures are directional.")
+        else:              st.error(f"Only {vs_int}/{mx2} passed. Treat results with caution.")
 
-    # Footer
     st.markdown("---")
     st.markdown(
         '<div class="disc" style="text-align:center">'
-        "NivesAI · LARF v2a · AMFI NAV data · 173 funds · Jan 2010–Apr 2026<br>"
-        "<strong>All results are retrospective research simulations. Not investment advice. NivesAI is not a SEBI-registered advisor.</strong>"
+        "NivesAI · LARF v2a · AMFI NAV data · 173 funds · Jan 2010–Apr 2026 · "
+        "<strong>Historical simulations only. Not investment advice. NivesAI is not a SEBI-registered advisor.</strong>"
         "</div>",
         unsafe_allow_html=True,
     )
@@ -723,129 +670,96 @@ with tab1:
 # ══════════════════════════════════════════════════════════════════════════════
 with tab2:
     st.markdown(
-        '<div style="font-size:0.88rem;color:#64748b;margin-bottom:16px">'
-        'Filter by category or AMC to compare how the overlay performed across multiple funds. '
-        'Uses full simulation results (Jan 2010–Apr 2026).</div>',
+        '<div style="font-size:0.85rem;color:#64748b;margin-bottom:14px">'
+        'Filter by category or AMC. All figures from the full Jan 2010–Apr 2026 simulation.</div>',
         unsafe_allow_html=True,
     )
 
-    # Determine which columns are available for comparison
-    # Try common names; fall back gracefully
-    def try_col(df, *candidates):
-        for c in candidates:
-            if c in df.columns:
-                return c
+    def try_col(df, *cands):
+        for c in cands:
+            if c in df.columns: return c
         return None
 
-    col_v2a_cagr  = try_col(master_df, "v2a_cagr",  "overlay_cagr")
-    col_bnh_cagr  = try_col(master_df, "bnh_cagr",  "hold_cagr")
-    col_v2a_dd    = try_col(master_df, "v2a_max_dd","overlay_max_dd","v2a_mdd")
-    col_bnh_dd    = try_col(master_df, "bnh_max_dd","hold_max_dd",  "bnh_mdd")
-    col_v2a_score = try_col(master_df, "v2a_score")
-    col_bnh_score = try_col(master_df, "bnh_score")
-    has_metrics   = all(x is not None for x in [col_v2a_cagr, col_bnh_cagr, col_v2a_dd, col_bnh_dd])
+    col_vc = try_col(master_df, "v2a_cagr", "overlay_cagr")
+    col_bc = try_col(master_df, "bnh_cagr", "hold_cagr")
+    col_vd = try_col(master_df, "v2a_max_dd","overlay_max_dd","v2a_mdd")
+    col_bd = try_col(master_df, "bnh_max_dd","hold_max_dd","bnh_mdd")
+    has_m  = all(x is not None for x in [col_vc, col_bc, col_vd, col_bd])
 
-    # Filter controls
     st.markdown('<div class="compare-filter">', unsafe_allow_html=True)
     cf1, cf2, cf3 = st.columns([2, 2, 1])
     with cf1:
         cats = ["All categories"] + sorted(master_df["scheme_category"].dropna().unique().tolist())
-        sel_cat = st.selectbox("Filter by Category", cats, key="compare_cat")
+        sel_cat = st.selectbox("Category", cats, key="cc")
     with cf2:
         amcs = ["All AMCs"] + sorted(master_df["amc"].dropna().unique().tolist())
-        sel_amc = st.selectbox("Filter by AMC", amcs, key="compare_amc")
+        sel_amc = st.selectbox("AMC", amcs, key="ca")
     with cf3:
-        sort_opts = ["Overlay Return ↓", "DD Saved ↓", "Validation Score ↓"]
-        sort_by = st.selectbox("Sort by", sort_opts, key="compare_sort")
+        sort_by = st.selectbox("Sort by", ["Overlay Return ↓","DD Saved ↓","Validation ↓"], key="cs")
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Apply filters
     cdf = master_df.copy()
-    if sel_cat != "All categories":
-        cdf = cdf[cdf["scheme_category"] == sel_cat]
-    if sel_amc != "All AMCs":
-        cdf = cdf[cdf["amc"] == sel_amc]
+    if sel_cat != "All categories": cdf = cdf[cdf["scheme_category"] == sel_cat]
+    if sel_amc != "All AMCs":       cdf = cdf[cdf["amc"] == sel_amc]
 
     if len(cdf) == 0:
         st.warning("No funds match the selected filters.")
-        st.stop()
+    else:
+        rows = []
+        for _, r in cdf.iterrows():
+            row = {"Fund": r.get("scheme_name","—"), "Category": r.get("scheme_category","—"),
+                   "AMC": r.get("amc","—"), "Role": r.get("final_role","—")}
+            if has_m:
+                vc = safe_float(r.get(col_vc)); bc = safe_float(r.get(col_bc))
+                vd = safe_float(r.get(col_vd)); bd = safe_float(r.get(col_bd))
+                row["Return · Overlay"]  = f"{vc*100:.1f}%"  if vc else "—"
+                row["Return · Holding"]  = f"{bc*100:.1f}%"  if bc else "—"
+                row["Return Δ"]          = f"+{(vc-bc)*100:.2f}%" if (vc and bc) else "—"
+                row["MaxDD · Overlay"]   = f"−{abs(vd)*100:.1f}%" if vd else "—"
+                row["MaxDD · Holding"]   = f"−{abs(bd)*100:.1f}%" if bd else "—"
+                row["DD Saved (pp)"]     = round((abs(bd)-abs(vd))*100,1) if (vd and bd) else None
+                row["_vc"] = vc or -99; row["_dds"] = (abs(bd)-abs(vd))*100 if (vd and bd) else -99
+            vs = safe_float(r.get("validation_score"))
+            row["Validation"] = f"{int(vs)}" if vs else "—"; row["_vs"] = vs or -99
+            rows.append(row)
 
-    # Build comparison table
-    rows = []
-    for _, r in cdf.iterrows():
-        row = {
-            "Fund": r.get("scheme_name","—"),
-            "Category": r.get("scheme_category","—"),
-            "AMC": r.get("amc","—"),
-            "Role": r.get("final_role","—"),
-        }
-        if has_metrics:
-            vc = safe_float(r.get(col_v2a_cagr)) ; bc = safe_float(r.get(col_bnh_cagr))
-            vd = safe_float(r.get(col_v2a_dd))  ; bd = safe_float(r.get(col_bnh_dd))
-            row["Return · Overlay"]  = f"{vc*100:.1f}%" if vc is not None else "—"
-            row["Return · Holding"]  = f"{bc*100:.1f}%" if bc is not None else "—"
-            row["Return Δ"]          = f"+{(vc-bc)*100:.2f}%" if (vc and bc) else "—"
-            row["MaxDD · Overlay"]   = f"−{abs(vd)*100:.1f}%" if vd is not None else "—"
-            row["MaxDD · Holding"]   = f"−{abs(bd)*100:.1f}%" if bd is not None else "—"
-            row["DD Saved (pp)"]     = round((abs(bd)-abs(vd))*100, 1) if (vd and bd) else None
-            # Sort helpers
-            row["_vc"] = vc if vc else -99
-            row["_dd_saved"] = (abs(bd)-abs(vd))*100 if (vd and bd) else -99
-        vs = safe_float(r.get("validation_score"))
-        row["Validation"] = f"{int(vs)}" if vs is not None else "—"
-        row["_vs"] = vs if vs is not None else -99
-        rows.append(row)
+        cdf2 = pd.DataFrame(rows)
+        sc_map = {"Overlay Return ↓":"_vc","DD Saved ↓":"_dds","Validation ↓":"_vs"}
+        sc_col = sc_map.get(sort_by,"_vc")
+        if sc_col in cdf2.columns: cdf2 = cdf2.sort_values(sc_col, ascending=False)
+        disp = cdf2[[c for c in cdf2.columns if not c.startswith("_")]].reset_index(drop=True)
 
-    compare_df = pd.DataFrame(rows)
+        st.markdown(f'<div class="note" style="margin-bottom:8px">Showing <strong>{len(disp)}</strong> funds</div>',
+                    unsafe_allow_html=True)
+        st.dataframe(disp, use_container_width=True, hide_index=True)
 
-    # Sort
-    sort_col = {"Overlay Return ↓": "_vc", "DD Saved ↓": "_dd_saved", "Validation Score ↓": "_vs"}.get(sort_by, "_vc")
-    if sort_col in compare_df.columns:
-        compare_df = compare_df.sort_values(sort_col, ascending=False)
+        if has_m and len(cdf2) <= 60 and "Return Δ" in cdf2.columns:
+            st.markdown('<div class="slbl">Annual Return Delta: Overlay vs Holding</div>', unsafe_allow_html=True)
+            cd = cdf2[cdf2["Return Δ"] != "—"].copy()
+            cd["_dv"] = cd["Return Δ"].str.replace("%","").str.replace("+","").astype(float)
+            cd = cd.sort_values("_dv", ascending=True).tail(40)
+            fig2 = go.Figure(go.Bar(
+                x=cd["_dv"], y=cd["Fund"].str[:50], orientation="h",
+                marker_color=["#14b8a6" if v>=0 else "#ef4444" for v in cd["_dv"]],
+                text=[f"+{v:.2f}%" if v>=0 else f"{v:.2f}%" for v in cd["_dv"]],
+                textposition="outside",
+                hovertemplate="<b>%{y}</b><br>Delta: %{x:.2f}%<extra></extra>",
+            ))
+            fig2.update_layout(
+                height=max(320, len(cd)*22+60),
+                margin=dict(l=0, r=60, t=10, b=30),
+                paper_bgcolor="#0f172a", plot_bgcolor="#0f172a",
+                xaxis=dict(title="Return delta (pp)", gridcolor="#1e293b",
+                           zeroline=True, zerolinecolor="#475569", zerolinewidth=1.5,
+                           tickfont=dict(color="#475569")),
+                yaxis=dict(tickfont=dict(size=11, color="#94a3b8")),
+                font=dict(family="Inter, sans-serif", color="#94a3b8"),
+            )
+            st.plotly_chart(fig2, use_container_width=True)
 
-    # Drop internal sort columns
-    display_cols = [c for c in compare_df.columns if not c.startswith("_")]
-    compare_df = compare_df[display_cols].reset_index(drop=True)
-
-    st.markdown(f'<div class="note" style="margin-bottom:8px">Showing <strong>{len(compare_df)}</strong> funds</div>',
-                unsafe_allow_html=True)
-    st.dataframe(compare_df, use_container_width=True, hide_index=True)
-
-    # Chart — only if metrics available and not too many funds
-    if has_metrics and len(compare_df) <= 60 and "Return Δ" in compare_df.columns:
-        st.markdown('<div class="slbl">Return Delta: Overlay vs Simple Holding (full sim)</div>', unsafe_allow_html=True)
-
-        chart_df = compare_df[compare_df["Return Δ"] != "—"].copy()
-        chart_df["delta_num"] = chart_df["Return Δ"].str.replace("%","").str.replace("+","").astype(float)
-        chart_df = chart_df.sort_values("delta_num", ascending=True).tail(40)  # top 40 for readability
-
-        colors = ["#0d6e6e" if v >= 0 else "#ef4444" for v in chart_df["delta_num"]]
-        fig2 = go.Figure(go.Bar(
-            x=chart_df["delta_num"],
-            y=chart_df["Fund"].str[:45],  # truncate long names
-            orientation="h",
-            marker_color=colors,
-            text=[f"+{v:.2f}%" if v >= 0 else f"{v:.2f}%" for v in chart_df["delta_num"]],
-            textposition="outside",
-            hovertemplate="<b>%{y}</b><br>Return delta: %{x:.2f}%<extra></extra>",
-        ))
-        fig2.update_layout(
-            height=max(300, len(chart_df) * 22 + 60),
-            margin=dict(l=0, r=60, t=10, b=30),
-            paper_bgcolor="white", plot_bgcolor="white",
-            xaxis=dict(title="Return delta (pp)", gridcolor="#f1f5f9", zeroline=True,
-                       zerolinecolor="#94a3b8", zerolinewidth=1.5),
-            yaxis=dict(tickfont=dict(size=11)),
-            font=dict(family="Inter, sans-serif", size=11),
-        )
-        st.plotly_chart(fig2, use_container_width=True)
-        st.markdown('<div class="note">Positive (teal) = overlay delivered higher annual return than simple holding. '
-                    'Based on full Jan 2010–Apr 2026 simulation.</div>', unsafe_allow_html=True)
-
-    if not has_metrics:
-        st.info("Detailed metrics (CAGR, MaxDD) not found in results file — showing metadata only. "
-                "Check that larf_regime_results_v2.csv contains v2a_cagr and bnh_cagr columns.")
+        if not has_m:
+            st.info("Detailed metrics not found in results file. Check that larf_regime_results_v2.csv has v2a_cagr and bnh_cagr columns.")
 
     st.markdown("---")
-    st.markdown('<div class="disc">NivesAI · LARF v2a · All results are historical simulations. Not investment advice.</div>',
+    st.markdown('<div class="disc">NivesAI · LARF v2a · Historical simulations only. Not investment advice.</div>',
                 unsafe_allow_html=True)
